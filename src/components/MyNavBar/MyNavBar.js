@@ -1,5 +1,6 @@
 import React from 'react';
 import firebase from 'firebase/app';
+import Auth from '../Auth/Auth';
 import 'firebase/auth';
 
 class MyNavBar extends React.Component {
@@ -25,7 +26,7 @@ class MyNavBar extends React.Component {
               { authed ? (
               <button className="btn btn-danger my-2 my-sm-0" onClick={this.logMeOut}>Logout</button>
               ) : (
-                ''
+                <Auth />
               )}
             </form>
           </div>
