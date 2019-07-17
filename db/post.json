@@ -1,0 +1,36 @@
+{
+  "posts": {
+    "post1": {
+      "id": "post1",
+      "isPosted": "",
+      "uid": "",
+      "postDate": "",
+      "postDesc": "",
+      "postItemsId": "post1"
+    },
+    "post2": {
+      "id": "post2",
+      "isPosted": "",
+      "uid": "",
+      "postDate": "",
+      "postDesc": "",
+      "postItemsId": "post1"
+    },
+    "post3": {
+      "id": "post3",
+      "isPosted": "",
+      "uid": "",
+      "postDate": "",
+      "postDesc": "",
+      "postItemsId": "post1"
+    },
+    "post4": {
+      "id": "post4",
+      "isPosted": "",
+      "uid": "",
+      "postDate": "",
+      "postDesc": "",
+      "postItemsId": "post1"
+    }
+  }
+}

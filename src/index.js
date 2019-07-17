@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'react-app-polyfill/stable';
+import 'react-app-polyfill/ie9';
+import 'react-app-polyfill/ie11';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap';
 import './styles/index.scss';
-import App from './App/App'
+import App from './App/App';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<App />, document.getElementById('root'));

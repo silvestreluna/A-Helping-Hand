@@ -1,0 +1,24 @@
+{
+  "users": {
+    "user1": {
+      "id": "user1",
+      "uid": "XKs7nATTXkXjAncQucTHFxQwzyq2",
+      "fName": "Silvestre",
+      "lName": "Luna",
+      "loc": "Nashville, TN",
+      "phNum": "615-711-1111",
+      "email": "slvtrluna@gmail.com",
+      "imgUrl": "google.com"
+    },
+    "user2": {
+      "id": "user2",
+      "uid": "XKs7nATTXkXcTHFxQwzyq2",
+      "fName": "John",
+      "lName": "Doe",
+      "loc": "Nashville, TN",
+      "phNum": "615-711-1234",
+      "email": "test@gmail.com",
+      "imgUrl": "google.com"
+    }
+  }
+}

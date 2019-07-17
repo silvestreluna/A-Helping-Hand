@@ -63,7 +63,8 @@ class App extends React.Component {
           <div className="container">
             <div className="row">
               <Switch>
-                <PublicRoute path='/auth' component={Home} authed={authed}/>
+                <PublicRoute path='/auth' component={Home} authed={authed} />
+                <PublicRoute path='/home' component={Home} authed={authed} />
                 <Redirect from="*" to='/home' />
               </Switch>
             </div>

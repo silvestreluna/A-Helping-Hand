@@ -1,0 +1,19 @@
+{
+  "items": {
+    "item1": {
+      "id": "item1",
+      "postId": "post1",
+      "productId": ""
+    },
+    "item2": {
+      "id": "item2",
+      "postId": "post2",
+      "productId": ""
+    },
+    "item3": {
+      "id": "item3",
+      "postId": "post3",
+      "productId": ""
+    }
+  }
+}
