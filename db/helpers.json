@@ -1,19 +1,17 @@
 {
-  "helpers": {
-    "helper1": {
-      "id": "helper1",
-      "helperUid": "134343343",
-      "numHelped": 1
-    },
-    "helper2": {
-      "id": "helper2",
-      "helperUid": "143993939399449",
-      "numHelped": 4
-    },
-    "helper3": {
-      "id": "helper3",
-      "helperUid": "9393933939393",
-      "numHelped": 3
-    }
+  "helper1": {
+    "id": "helper1",
+    "helperUid": "XKs7nATTXkXjAncQucTHFxQwzyq2",
+    "numHelped": 1
+  },
+  "helper2": {
+    "id": "helper2",
+    "helperUid": "XKs7nATTXkXjAncQucTHFxQwzyq2",
+    "numHelped": 4
+  },
+  "helper3": {
+    "id": "helper3",
+    "helperUid": "user1",
+    "numHelped": 3
   }
 }

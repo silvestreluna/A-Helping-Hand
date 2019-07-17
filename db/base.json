@@ -1,9 +1,7 @@
 {
-  "aHelpingHand": {
-    "post": "a",
-    "users": "b",
-    "helpers": "c",
-    "items": "d",
-    "products": "f"
-  }
+  "post": "a",
+  "users": "b",
+  "helpers": "c",
+  "items": "d",
+  "products": "f"
 }

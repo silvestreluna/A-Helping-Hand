@@ -1,19 +1,32 @@
 {
-  "items": {
-    "item1": {
-      "id": "item1",
-      "postId": "post1",
-      "productId": ""
-    },
-    "item2": {
-      "id": "item2",
-      "postId": "post2",
-      "productId": ""
-    },
-    "item3": {
-      "id": "item3",
-      "postId": "post3",
-      "productId": ""
-    }
+  "item1": {
+    "id": "item1",
+    "postId": "post1",
+    "productId": "p2"
+  },
+  "item2": {
+    "id": "item2",
+    "postId": "post1",
+    "productId": "p1"
+  },
+  "item3": {
+    "id": "item3",
+    "postId": "post1",
+    "productId": "p3"
+  },
+  "item4": {
+    "id": "item4",
+    "postId": "post2",
+    "productId": "p1"
+  },
+  "item5": {
+    "id": "item5",
+    "postId": "post3",
+    "productId": "p2"
+  },
+  "item6": {
+    "id": "item6",
+    "postId": "post3",
+    "productId": "p3"
   }
 }
