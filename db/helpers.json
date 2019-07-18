@@ -1,0 +1,17 @@
+{
+  "helper1": {
+    "id": "helper1",
+    "helperUid": "XKs7nATTXkXjAncQucTHFxQwzyq2",
+    "numHelped": 1
+  },
+  "helper2": {
+    "id": "helper2",
+    "helperUid": "XKs7nATTXkXjAncQucTHFxQwzyq2",
+    "numHelped": 4
+  },
+  "helper3": {
+    "id": "helper3",
+    "helperUid": "user1",
+    "numHelped": 3
+  }
+}

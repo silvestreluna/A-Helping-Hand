@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import firebase from 'firebase/app';
+import Auth from '../Auth/Auth';
 import 'firebase/auth';
 
 class MyNavBar extends React.Component {
@@ -20,12 +22,13 @@ class MyNavBar extends React.Component {
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto">
+              <Link to="/home">Home</Link>
             </ul>
             <form className="form-inline my-2 my-lg-0">
               { authed ? (
               <button className="btn btn-danger my-2 my-sm-0" onClick={this.logMeOut}>Logout</button>
               ) : (
-                ''
+                <Auth />
               )}
             </form>
           </div>

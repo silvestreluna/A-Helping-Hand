@@ -1,0 +1,17 @@
+{
+  "p1": {
+    "prodId": "p1",
+    "prodName": "ketchup",
+    "url": ""
+  },
+  "p2": {
+    "prodId": "p2",
+    "prodName": "table",
+    "url": ""
+  },
+  "p3": {
+    "prodId": "p3",
+    "prodName": "diaper",
+    "url": ""
+  }
+}
