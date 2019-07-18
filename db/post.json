@@ -10,7 +10,7 @@
   "post2": {
     "id": "post2",
     "isPosted": false,
-    "uid": "XKs7nATTXkXcTHFxQwzyq2",
+    "uid": "user2forCard2",
     "postDate": "05/03/2019",
     "postDesc": "Thanks!",
     "postItemsId": "post1"
@@ -26,7 +26,7 @@
   "post4": {
     "id": "post4",
     "isPosted": true,
-    "uid": "user4",
+    "uid": "user2forCard2",
     "postDate": "05/01/2019",
     "postDesc": "Help",
     "postItemsId": "post1"

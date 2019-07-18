@@ -1,10 +1,17 @@
 import React from 'react';
 import { Jumbotron, Button } from 'reactstrap';
+import AllPost from '../AllPost/AllPost';
 
 import './LandingPage.scss';
 
 class LandingPage extends React.Component {
   render() {
+    const {
+      allPost,
+      users,
+      itemsName,
+    } = this.props;
+
     return (
       <div className="LandingPage">
         <Jumbotron>
@@ -22,6 +29,10 @@ class LandingPage extends React.Component {
           </p>
           </div>
         </Jumbotron>
+        <AllPost
+          allPost={allPost}
+          users={users}
+          itemsName={itemsName}/>
       </div>
     );
   }
