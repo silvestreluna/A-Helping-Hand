@@ -1,10 +1,10 @@
 import firebase from 'firebase/app';
 import firebaseConfig from '../apiKeys.json';
 
-const firebaseApp = () => {
+const fbConnection = () => {
   if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig.firebaseKeys);
   }
 };
 
-export default firebaseApp;
+export default fbConnection;

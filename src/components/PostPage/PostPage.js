@@ -1,11 +1,10 @@
 import React from 'react';
+import AllPost from '../AllPost/AllPost';
 import allPostData from '../../helpers/data/getAllPost';
 import allUsers from '../../helpers/data/getUsers';
 import smash from '../../helpers/data/smashData';
 
-import LandingPage from '../LandingPage/LandingPage';
-
-class Home extends React.Component {
+class PostPage extends React.Component {
   state = {
     allPost: [],
     itemsName: [],
@@ -36,18 +35,16 @@ class Home extends React.Component {
       itemsName,
       users,
     } = this.state;
-
     return (
-      <div className="Home">
-        <div className="links">
-        </div>
-        <LandingPage
-        allPost={allPost}
-        itemsName={itemsName}
-        users={users}/>
+      <div className="PostPage">
+        <AllPost
+          allPost={allPost}
+          itemsName={itemsName}
+          users={users}/>
+
       </div>
     );
   }
 }
 
-export default Home;
+export default PostPage;
