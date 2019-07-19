@@ -6,14 +6,17 @@ import {
   Switch,
 } from 'react-router-dom';
 import firebase from 'firebase/app';
-import 'firebase/auth';
-import firebaseApp from '../helpers/data/connections';
+
+import fbConnection from '../helpers/data/connections';
+// import Auth from '../components/Auth/Auth';
 import MyNavBar from '../components/MyNavBar/MyNavBar';
 import Home from '../components/Home/Home';
+import postPage from '../components/PostPage/PostPage';
 
 import './App.scss';
 
-firebaseApp();
+fbConnection();
+
 const PublicRoute = ({ component: Component, authed, ...rest }) => {
   const routeChecker = props => (authed === false
     ? (<Component {...props}/>)
@@ -24,15 +27,15 @@ const PublicRoute = ({ component: Component, authed, ...rest }) => {
   return <Route {...rest} render={props => routeChecker(props)}/>;
 };
 
-// const PrivateRoute = ({ component: Component, authed, ...rest }) => {
-//   const routeChecker = props => (authed === true
-//     ? (<Component {...props}/>)
-//     : (
-//       (<Redirect to={{ pathname: '/auth', state: { from: props.location } }} />)
-//     )
-//   );
-//   return <Route {...rest} render={props => routeChecker(props)}/>;
-// };
+const PrivateRoute = ({ component: Component, authed, ...rest }) => {
+  const routeChecker = props => (authed === true
+    ? (<Component {...props}/>)
+    : (
+      (<Redirect to={{ pathname: '/auth', state: { from: props.location } }} />)
+    )
+  );
+  return <Route {...rest} render={props => routeChecker(props)}/>;
+};
 
 class App extends React.Component {
   state = {
@@ -40,7 +43,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.reomveListener = firebase.auth().onAuthStateChanged((user) => {
+    this.removeListener = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         this.setState({ authed: true });
       } else {
@@ -50,26 +53,29 @@ class App extends React.Component {
   }
 
   componentWillUnmount() {
-    this.reomveListener();
+    this.removeListener();
   }
 
   render() {
     const { authed } = this.state;
+
+
     return (
       <div className="App">
         <BrowserRouter>
-        <React.Fragment>
-          <MyNavBar authed={authed} />
-          <div className="container">
-            <div className="row">
-              <Switch>
-                <PublicRoute path='/auth' component={Home} authed={authed} />
-                <PublicRoute path='/home' component={Home} authed={authed} />
-                <Redirect from="*" to='/home' />
-              </Switch>
+          <React.Fragment>
+            <MyNavBar authed={authed} />
+            <div className="container">
+              <div className="row">
+                <Switch>
+                  <PublicRoute path='/auth' component={Home} authed={authed} />
+                  <PrivateRoute path='/home' component={Home} authed={authed} />
+                  <PrivateRoute path='/posts' component={postPage} authed={authed} />
+                  <Redirect from="*" to="/auth" />
+                </Switch>
+              </div>
             </div>
-          </div>
-        </React.Fragment>
+          </React.Fragment>
         </BrowserRouter>
       </div>
     );
