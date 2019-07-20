@@ -37,6 +37,7 @@ class PostPage extends React.Component {
     } = this.state;
     return (
       <div className="PostPage">
+        <h3>Neighbors needing A Helping Hand</h3>
         <AllPost
           allPost={allPost}
           itemsName={itemsName}
