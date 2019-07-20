@@ -27,9 +27,10 @@ class MyNavBar extends React.Component {
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav mr-auto">
-              <Nav>
+              <Nav className="d-flex justify-content-around">
                 <NavLink tag={RRNavLink} to='/home'>Home</NavLink>
                 <NavLink tag={RRNavLink} to='/posts'>All Posts</NavLink>
+                <NavLink tag={RRNavLink} to='/user'>My Space</NavLink>
               </Nav>
             </ul>
             <form className="form-inline my-2 my-lg-0">
