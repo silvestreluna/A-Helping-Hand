@@ -30,6 +30,9 @@ class PostPage extends React.Component {
     this.getAllPostData();
   }
 
+  componentWillMount() {
+    this.getAllPostData();
+  }
 
   render() {
     const {

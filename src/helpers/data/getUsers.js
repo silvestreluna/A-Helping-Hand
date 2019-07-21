@@ -12,7 +12,6 @@ const getUsers = () => new Promise((resolve, reject) => {
         allUsers[user].id = user;
         usersWithId.push(allUsers[user]);
       });
-      // console.error(usersWithId, 'user with id');
       resolve(usersWithId);
     })
     .catch(err => reject(err));

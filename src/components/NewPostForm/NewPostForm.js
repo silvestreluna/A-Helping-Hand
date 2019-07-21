@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  // Button,
+  Button,
   Form,
   FormGroup,
   Label,
@@ -9,81 +9,160 @@ import {
 } from 'reactstrap';
 import firebase from 'firebase/app';
 import 'firebase/auth';
+import 'firebase/database';
 import util from '../../helpers/util';
+import getData from '../../helpers/data/getAllPost';
+import ListItems from '../ListItems/ListItems';
+import prodName from '../../helpers/data/smashData';
 
-const defaultPost = {
-  story: '',
-  item1: '',
-  item2: '',
-  item3: '',
-  item4: '',
-};
+
+// const defaultPost = {
+//   story: '',
+//   item1: '',
+//   prodName: [],
+
+// };
 
 class NewPostForm extends React.Component {
   state = {
-    newPost: defaultPost,
+    // newPost: defaultPost,
+    story: '',
+    item1: '',
+    newPostId: '',
+    smashItemName: [],
+
   }
 
-  formFieldStringState = (name, e) => {
+  getItemData = () => {
+    prodName.itemsName()
+      .then(data => this.setState({ smashItemName: data }))
+      .catch(err => console.error(err, 'Nothing came back'));
+  };
+
+  componentDidMount() {
+    this.getItemData();
+  }
+
+
+  userStory = (e) => {
     e.preventDefault();
-    const tempPost = { ...this.state.newPost };
-    tempPost[name] = e.target.value;
-    this.setState({ newPost: tempPost });
+    this.setState({ story: e.target.value });
   }
 
-  userStory = e => this.formFieldStringState('story', e);
+  userItem1 = (e) => {
+    e.preventDefault();
+    this.setState({ item1: e.target.value });
+  }
 
-  userItem1 = e => this.formFieldStringState('item1', e);
+  // userStory = e => this.formFieldStringState('story', e);
 
-  userItem2 = e => this.formFieldStringState('item2', e);
+  // userItem1 = e => this.formFieldStringState('item1', e);
 
-  userItem3 = e => this.formFieldStringState('item3', e);
+  putApost = (e) => {
+    e.preventDefault();
+    const newPostId = firebase.database().ref().child('/post').push().key;
+    const { uid } = firebase.auth().currentUser;
 
-  userItem4 = e => this.formFieldStringState('item4', e);
+    const newPostObj = {
+      isPosted: true,
+      uid,
+      postDate: util.addDateAndTime(),
+      postDesc: this.state.story,
+    };
+
+    getData.addNewPost(newPostObj, newPostId)
+      .then(() => this.setState({ newPostId }))
+      .catch(err => console.error(err, 'Nothing to Add.'));
+  }
 
 
-    putApost = (e) => {
-      e.preventDefault();
-      const { uid } = firebase.auth().currentUser;
-      const copyPost = { ...this.state.newPost };
-      const newPostObje = {
-        isPosted: true,
-        uid,
-        postDate: util.addDateAndTime(),
-        postDesc: copyPost.story,
-      };
-      console.error(newPostObje, 'this');
+  postNewProdAndItem = (e) => {
+    e.preventDefault();
+    const newProdId = firebase.database().ref().child('/products').push().key;
+
+    const newProdObj = {
+      prodId: newProdId,
+      prodName: this.state.item1,
+      url: '',
+    };
+
+    const newItem1 = {
+      postId: this.state.newPostId,
+      productId: newProdId,
+    };
+
+    if (this.state.item1 === '') {
+      this.setState({ item1: '' });
+    } else {
+      getData.addNewProd(newProdObj, newProdId)
+        .then(() => {
+          getData.addNewItem(newItem1)
+            .then(() => {
+              this.setState({ item1: '' });
+              this.getItemData();
+            });
+        })
+        .catch(err => console.error(err, 'Not able to Add items'));
     }
+  };
 
-    render() {
-      const { newPost } = this.state;
+  completePost = (e) => {
+    e.preventDefault();
+    this.setState({ story: '' });
+    this.props.history.push('/posts');
+  }
 
-      return (
+
+  render() {
+    const {
+      story,
+      item1,
+      newPostId,
+      smashItemName,
+    } = this.state;
+    const filteredItem = smashItemName.filter(a => a.postId === newPostId);
+
+    return (
       <div className="NewPostForm">
         <h3>New Form</h3>
-        <Form onSubmit={this.putApost}>
-        <FormGroup>
-          <Label for="story">Your Story</Label>
-          <Input type="textarea" name="text" id="story" value={newPost.story} onChange={this.userStory} />
-        </FormGroup>
-        <FormGroup>
-          <Label for="item1">Stuff I Need:</Label>
-          <Input type="text" name="text" id="item1" placeholder="Shoe" value={newPost.item1} onChange={this.userItem1}/>
+        <div>
+          <Form>
+            {
+              (newPostId)
+                ? (<h5>{story}</h5>)
+                : (
+                  <FormGroup>
+                    <Label for="story">Your Story</Label>
+                    <Input type="textarea" name="text" id="story" value={story} onChange={this.userStory} required />
+                  </FormGroup>
+                )
+            }
+            {/* <ListItems /> */}
+            {
+              (newPostId) ? (
+                <FormGroup>
+                  <ListItems filteredItem={filteredItem} />
+                  <Label for="item1"></Label>
+                  <Input type="text" name="text" id="item1" placeholder="Item I need.." value={item1} onChange={this.userItem1} />
+                  <Button className="btn btn-primary m-2" onClick={this.postNewProdAndItem}>+ More Item</Button>
+                </FormGroup>
+              ) : (
+                ''
+              )
+            }
 
-          <Label for="item2"></Label>
-          <Input type="text" name="text" id="item2" placeholder="Shoe" />
-
-          <Label for="item3"></Label>
-          <Input type="text" name="text" id="item3" placeholder="Shoe" />
-
-          <Label for="item4"></Label>
-          <Input type="text" name="text" id="item4" placeholder="Shoe" />
-        </FormGroup>
-        <input type="submit" value="Submit" className="btn btn-secondary"/>
-      </Form>
+            {
+              (newPostId) ? (
+                <input type="submit" value="Submit" className="btn btn-secondary m-5" onClick={this.completePost} />
+              ) : (
+                  <input type="submit" value="Next" className="btn btn-secondary m-5" onClick={this.putApost} />
+              )
+            }
+          </Form>
+        </div>
       </div>
-      );
-    }
+    );
+  }
 }
 
 export default NewPostForm;
