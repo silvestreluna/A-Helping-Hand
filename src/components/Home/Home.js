@@ -30,7 +30,6 @@ class Home extends React.Component {
     this.getAllPostData();
   }
 
-
   render() {
     const {
       allPost,
@@ -39,7 +38,7 @@ class Home extends React.Component {
     } = this.state;
 
     return (
-      <div className="Home">
+      <div className="Home col">
         <div className="links">
         </div>
         <LandingPage

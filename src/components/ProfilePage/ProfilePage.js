@@ -60,7 +60,6 @@ class ProfilePage extends React.Component {
     return (
       <div className="ProfilePage col">
         <div className="user m-5">
-          {console.error(user())}
           <h5>Hello, {myInfo.displayName}</h5>
           <img src={myInfo.photoURL} alt="this user Img" className="img-thumbnail userImg"/>
           <div className="border p-3">

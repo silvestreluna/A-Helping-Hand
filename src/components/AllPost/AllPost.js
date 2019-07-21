@@ -6,8 +6,6 @@ class AllPost extends React.Component {
     const {
       allPost,
       itemsName,
-      // items,
-      // prods,
       users,
     } = this.props;
 
@@ -25,7 +23,7 @@ class AllPost extends React.Component {
 
     return (
       <div className="AllPost">
-        <div className="d-flex">
+        <div className="d-flex m-5">
           {eachPost}
         </div>
       </div>

@@ -15,7 +15,7 @@ class EachPost extends React.Component {
               <h5 className="card-title">{userName.fName}</h5>
               <p className="card-text">{userName.loc}</p>
               <p className="card-text">{post.postDate}</p>
-              <p className="card-text">{post.desc}</p>
+              <p className="card-text">{post.postDesc}</p>
               {postItems}
               <button className="btn btn-outline-secondary">Help</button>
           </div>

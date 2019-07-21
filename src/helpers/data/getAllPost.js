@@ -12,10 +12,22 @@ const getAllPost = () => new Promise((resolve, reject) => {
         allPost[post].id = post;
         postWithId.push(allPost[post]);
       });
-      // console.error(postWithId, 'post with id');
       resolve(postWithId);
     })
     .catch(err => reject(err));
 });
 
-export default { getAllPost };
+const addNewPost = (newPost, postKey) => axios.put(`${firebaseUrl}/post/${postKey}.json`, newPost);
+
+
+const addNewProd = (newProd, prodId) => axios.put(`${firebaseUrl}/products/${prodId}.json`, newProd);
+
+const addNewItem = newItem => axios.post(`${firebaseUrl}/items.json`, newItem);
+
+
+export default {
+  getAllPost,
+  addNewPost,
+  addNewProd,
+  addNewItem,
+};
