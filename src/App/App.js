@@ -13,8 +13,10 @@ import MyNavBar from '../components/MyNavBar/MyNavBar';
 import Home from '../components/Home/Home';
 import postPage from '../components/PostPage/PostPage';
 import ProfilePage from '../components/ProfilePage/ProfilePage';
+import NewPostForm from '../components/NewPostForm/NewPostForm';
 
 import './App.scss';
+// import Auth from '../components/Auth/Auth';
 
 fbConnection();
 
@@ -39,8 +41,6 @@ const PrivateRoute = ({ component: Component, authed, ...rest }) => {
 };
 
 class App extends React.Component {
-  _isMounted = false;
-
   state = {
     authed: false,
   }
@@ -75,7 +75,8 @@ class App extends React.Component {
                   <PrivateRoute path='/home' component={Home} authed={authed} />
                   <PrivateRoute path='/posts' component={postPage} authed={authed} />
                   <PrivateRoute path='/user' component={ProfilePage} authed={authed} />
-                  <Redirect from="*" to="/auth" />
+                  <PrivateRoute path='/newPost' component={NewPostForm} authed={authed} />
+                  <Redirect from="*" to="/home" />
                 </Switch>
               </div>
             </div>

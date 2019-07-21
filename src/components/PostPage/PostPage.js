@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import AllPost from '../AllPost/AllPost';
 import allPostData from '../../helpers/data/getAllPost';
 import allUsers from '../../helpers/data/getUsers';
@@ -29,6 +30,7 @@ class PostPage extends React.Component {
     this.getAllPostData();
   }
 
+
   render() {
     const {
       allPost,
@@ -38,6 +40,8 @@ class PostPage extends React.Component {
     return (
       <div className="PostPage">
         <h3>Neighbors needing A Helping Hand</h3>
+        <Link className="btn btn-outline-primary" to="/newPost">I Need Help</Link>
+        {/* <button className="btn btn-outline-primary" onClick={this.goToNewFormPage}>I need Help</button> */}
         <AllPost
           allPost={allPost}
           itemsName={itemsName}
