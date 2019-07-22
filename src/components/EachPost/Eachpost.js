@@ -1,11 +1,18 @@
 import React from 'react';
 
 class EachPost extends React.Component {
+  deleteMyPost = (e) => {
+    e.preventDefault();
+    const currentId = e.target.value;
+    this.props.deletePost(currentId);
+  }
+
   render() {
     const {
       post,
       userName,
       prodName,
+      myInfo,
     } = this.props;
     const postItems = prodName.map(item => <li key={item.itemId}>{item.prodName}</li>);
     return (
@@ -18,6 +25,15 @@ class EachPost extends React.Component {
               <p className="card-text">{post.postDesc}</p>
               {postItems}
               <button className="btn btn-outline-secondary">Help</button>
+              {
+                (myInfo === userName.uid)
+                  ? (
+                  <button value={post.id} className="btn btn-danger" onClick={this.deleteMyPost}>Delete Post</button>
+                  )
+                  : (
+                    ''
+                  )
+              }
           </div>
         </div>
       </div>

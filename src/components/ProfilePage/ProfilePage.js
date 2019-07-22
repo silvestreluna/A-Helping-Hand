@@ -6,6 +6,7 @@ import allPostData from '../../helpers/data/getAllPost';
 import allUsers from '../../helpers/data/getUsers';
 import smash from '../../helpers/data/smashData';
 
+
 import './ProfilePage.scss';
 
 
@@ -36,6 +37,14 @@ class ProfilePage extends React.Component {
 
   componentDidMount() {
     this.getAllPostData();
+  }
+
+  deletePost = (postId) => {
+    allPostData.deleteMyPost(postId)
+      .then(() => {
+        this.getAllPostData();
+      })
+      .catch(err => console.error(err, 'Nothing to delete'));
   }
 
   render() {
@@ -70,7 +79,9 @@ class ProfilePage extends React.Component {
         <div className="col">
         <AllPost
           allPost={allPost}
+          myInfo={myInfo.uid}
           users={users}
+          deletePost={this.deletePost}
           itemsName={itemsName}/>
         </div>
       </div>
