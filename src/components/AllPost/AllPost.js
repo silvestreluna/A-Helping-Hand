@@ -7,6 +7,8 @@ class AllPost extends React.Component {
       allPost,
       itemsName,
       users,
+      myInfo,
+      deletePost,
     } = this.props;
 
     const eachPost = allPost.map((post) => {
@@ -16,6 +18,8 @@ class AllPost extends React.Component {
         return <EachPost key={post.id}
           userName={userName}
           prodName={prodName}
+          myInfo={myInfo}
+          deletePost={deletePost}
           post={post} />;
       }
       return [];

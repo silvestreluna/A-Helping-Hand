@@ -24,10 +24,13 @@ const addNewProd = (newProd, prodId) => axios.put(`${firebaseUrl}/products/${pro
 
 const addNewItem = newItem => axios.post(`${firebaseUrl}/items.json`, newItem);
 
+const deleteMyPost = postId => axios.delete(`${firebaseUrl}/post/${postId}.json`);
+
 
 export default {
   getAllPost,
   addNewPost,
   addNewProd,
   addNewItem,
+  deleteMyPost,
 };
