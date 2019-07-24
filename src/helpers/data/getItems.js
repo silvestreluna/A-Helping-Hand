@@ -12,7 +12,6 @@ const getItems = () => new Promise((resolve, reject) => {
         allItems[item].id = item;
         itemWithId.push(allItems[item]);
       });
-      // console.error(itemWithId, 'item with id');
       resolve(itemWithId);
     })
     .catch(err => reject(err));

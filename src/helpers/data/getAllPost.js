@@ -19,6 +19,17 @@ const getAllPost = () => new Promise((resolve, reject) => {
 
 const addNewPost = (newPost, postKey) => axios.put(`${firebaseUrl}/post/${postKey}.json`, newPost);
 
+const editPost = (postObj, postId) => axios.patch(`${firebaseUrl}/post/${postId}.json`, postObj);
+
+const editStuff = (postObj, postId, path) => axios.patch(`${firebaseUrl}/${path}/${postId}.json`, postObj);
+
+const editDeleteItem = itemId => postId => axios.delete(`${firebaseUrl}/items/${itemId}.json`);
+
+const editDeleteProd = prodId => postId => axios.delete(`${firebaseUrl}/products/${prodId}.json`);
+
+
+const getDataById = stuffId => axios.get(`${firebaseUrl}/post/${stuffId}.json`);
+
 
 const addNewProd = (newProd, prodId) => axios.put(`${firebaseUrl}/products/${prodId}.json`, newProd);
 
@@ -33,4 +44,9 @@ export default {
   addNewProd,
   addNewItem,
   deleteMyPost,
+  getDataById,
+  editPost,
+  editStuff,
+  editDeleteItem,
+  editDeleteProd,
 };

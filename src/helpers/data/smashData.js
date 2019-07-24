@@ -12,6 +12,7 @@ const itemsName = () => new Promise((resolve, reject) => {
               const newObj = {
                 itemId: item.id,
                 postId: item.postId,
+                prodId: prod.id,
                 prodName: prod.prodName,
               };
               itemName.push(newObj);

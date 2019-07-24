@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 
 class EachPost extends React.Component {
   deleteMyPost = (e) => {
@@ -14,7 +16,14 @@ class EachPost extends React.Component {
       prodName,
       myInfo,
     } = this.props;
-    const postItems = prodName.map(item => <li key={item.itemId}>{item.prodName}</li>);
+    const editLink = `/editPost/${post.id}`;
+    const postItems = prodName.map((item) => {
+      if (item.prodName === '') {
+        return '';
+      }
+      return <li key={item.itemId}>{item.prodName}</li>;
+    });
+
     return (
       <div className="EachPost col-3">
           <div className="card text-center">
@@ -24,14 +33,17 @@ class EachPost extends React.Component {
               <p className="card-text">{post.postDate}</p>
               <p className="card-text">{post.postDesc}</p>
               {postItems}
-              <button className="btn btn-outline-secondary">Help</button>
+              {/* <button className="btn btn-outline-secondary">Help</button> */}
               {
                 (myInfo === userName.uid)
                   ? (
-                  <button value={post.id} className="btn btn-danger" onClick={this.deleteMyPost}>Delete Post</button>
+                    <div>
+                      <Link className="btn btn-primary" to={editLink}>Edit</Link>
+                      <button value={post.id} className="btn btn-danger" onClick={this.deleteMyPost}>Delete Post</button>
+                    </div>
                   )
                   : (
-                    ''
+                    <button className="btn btn-outline-secondary">Help</button>
                   )
               }
           </div>

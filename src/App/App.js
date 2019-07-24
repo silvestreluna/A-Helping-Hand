@@ -14,6 +14,7 @@ import Home from '../components/Home/Home';
 import postPage from '../components/PostPage/PostPage';
 import ProfilePage from '../components/ProfilePage/ProfilePage';
 import NewPostForm from '../components/NewPostForm/NewPostForm';
+import EditPost from '../components/EditPost/EditPost';
 
 import './App.scss';
 // import Auth from '../components/Auth/Auth';
@@ -76,6 +77,7 @@ class App extends React.Component {
                   <PrivateRoute path='/posts' component={postPage} authed={authed} />
                   <PrivateRoute path='/user' component={ProfilePage} authed={authed} />
                   <PrivateRoute path='/newPost' component={NewPostForm} authed={authed} />
+                  <PrivateRoute path='/editPost/:id' component={EditPost} authed={authed} />
                   <Redirect from="*" to="/home" />
                 </Switch>
               </div>
