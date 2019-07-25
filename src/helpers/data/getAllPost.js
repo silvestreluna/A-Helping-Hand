@@ -23,6 +23,8 @@ const editPost = (postObj, postId) => axios.patch(`${firebaseUrl}/post/${postId}
 
 const editStuff = (postObj, postId, path) => axios.patch(`${firebaseUrl}/${path}/${postId}.json`, postObj);
 
+const getDonorSelectedItem = (postId, path) => axios.get(`${firebaseUrl}/${path}/${postId}.json`);
+
 const editDeleteItem = itemId => postId => axios.delete(`${firebaseUrl}/items/${itemId}.json`);
 
 const editDeleteProd = prodId => postId => axios.delete(`${firebaseUrl}/products/${prodId}.json`);
@@ -49,4 +51,5 @@ export default {
   editStuff,
   editDeleteItem,
   editDeleteProd,
+  getDonorSelectedItem,
 };
