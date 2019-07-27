@@ -17,6 +17,38 @@ const getAllPost = () => new Promise((resolve, reject) => {
     .catch(err => reject(err));
 });
 
+const getItemProdById = postId => new Promise((resolve, reject) => {
+  axios.get(`${firebaseUrl}/items.json?orderBy="postId"&equalTo="${postId}"`)
+    .then((resp) => {
+      const allData = resp.data;
+      const dataWithId = [];
+      Object.keys(allData).forEach((post) => {
+        allData[post].id = post;
+        dataWithId.push(allData[post]);
+      });
+      // console.error(dataWithId);
+      resolve(dataWithId);
+    })
+    .catch(err => reject(err));
+});
+
+// const getUser = uid => new Promise((resolve, reject) => {
+//   axios.get(`${firebaseUrl}/users.json?orderBy="uid"&equalTo="${uid}"`)
+//     .then((resp) => {
+//       const allData = resp.data;
+//       const dataWithId = [];
+//       Object.keys(allData).forEach((post) => {
+//         allData[post].id = post;
+//         dataWithId.push(allData[post]);
+//       });
+//       console.error(dataWithId);
+//       resolve(dataWithId);
+//     })
+//     .catch(err => reject(err));
+// });
+
+const getUser = uid => axios.get(`${firebaseUrl}/users.json?orderBy="uid"&equalTo="${uid}"`);
+
 const addNewPost = (newPost, postKey) => axios.put(`${firebaseUrl}/post/${postKey}.json`, newPost);
 
 const editPost = (postObj, postId) => axios.patch(`${firebaseUrl}/post/${postId}.json`, postObj);
@@ -31,6 +63,8 @@ const editDeleteProd = prodId => postId => axios.delete(`${firebaseUrl}/products
 
 
 const getDataById = stuffId => axios.get(`${firebaseUrl}/post/${stuffId}.json`);
+
+const getAllProd = () => axios.get(`${firebaseUrl}/products.json`);
 
 
 const addNewProd = (newProd, prodId) => axios.put(`${firebaseUrl}/products/${prodId}.json`, newProd);
@@ -52,4 +86,7 @@ export default {
   editDeleteItem,
   editDeleteProd,
   getDonorSelectedItem,
+  getItemProdById,
+  getUser,
+  getAllProd,
 };
