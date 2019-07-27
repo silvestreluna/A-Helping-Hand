@@ -12,6 +12,7 @@ class DonateItems extends React.Component {
     items: [],
     prodName: [],
     client: [],
+    isDonating: false,
   }
 
   getAllPostData = () => {
@@ -43,15 +44,32 @@ class DonateItems extends React.Component {
     this.props.history.push('/posts');
   }
 
+  donorAccepted = () => {
+    const postId = this.props.match.params.id;
+    const updatedPost = {
+      isPosted: false,
+    };
+    getData.editPost(updatedPost, postId)
+      .then(() => this.setState({ isDonating: true }))
+      .catch(err => console.error(err, 'Nothing updated'));
+  }
+
+  goBackToPostPage = () => {
+    this.props.history.push('/posts');
+  };
+
   componentDidMount() {
     this.getAllPostData();
   }
 
   render() {
-    const { client, prodName } = this.state;
-    const test2 = Object.values(client).map(a => (
-       <DonorPageUser key={a.id}
-       name={`${a.fName} ${a.lName}`}/>
+    const { client, prodName, isDonating } = this.state;
+    const clientInfo = Object.values(client).map(a => (
+      <DonorPageUser key={a.id}
+        name={`${a.fName} ${a.lName}`}
+        email={a.email}
+        phNum={a.phNum}
+        isDonating={isDonating} />
     ));
     console.error(prodName, 'filterName');
     const listOfItem = prodName.map((item) => {
@@ -63,15 +81,25 @@ class DonateItems extends React.Component {
     return (
       <div className="DonateItems">
         <h1>DonateItems</h1>
-        {test2}
+        {clientInfo}
         <ul>
-        {listOfItem}
-        <div className="m-3">
-          <p>Do you agree to donate all of the above items?</p>
-          <button className="btn btn-primary m-2">YES</button>
-          <button className="btn btn-danger m-2" onClick={this.donorCxl}>NO</button>
-        </div>
+          {listOfItem}
         </ul>
+        {
+          (isDonating)
+            ? (
+            <div>
+              <button className="btn btn-success" onClick={this.goBackToPostPage}>Done</button>
+            </div>
+            )
+            : (
+              <div className="m-3">
+                <p>Do you agree to donate all of the above items?</p>
+                <button className="btn btn-primary m-2" onClick={this.donorAccepted}>YES</button>
+                <button className="btn btn-danger m-2" onClick={this.donorCxl}>NO</button>
+              </div>
+            )
+        }
       </div>
     );
   }
