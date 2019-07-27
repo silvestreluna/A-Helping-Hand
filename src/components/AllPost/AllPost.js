@@ -12,7 +12,7 @@ class AllPost extends React.Component {
     } = this.props;
 
     const eachPost = allPost.map((post) => {
-      if (users.length && itemsName.length) {
+      if (users.length && itemsName.length && post.isPosted === true) {
         const userName = users.find(user => user.uid === post.uid);
         const prodName = itemsName.filter(a => a.postId === post.id);
         return <EachPost key={post.id}

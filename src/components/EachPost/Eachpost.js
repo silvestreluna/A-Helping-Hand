@@ -16,7 +16,10 @@ class EachPost extends React.Component {
       prodName,
       myInfo,
     } = this.props;
+
     const editLink = `/editPost/${post.id}`;
+    const donorLink = `/donate/${post.id}`;
+
     const postItems = prodName.map((item) => {
       if (item.prodName === '') {
         return '';
@@ -43,7 +46,7 @@ class EachPost extends React.Component {
                     </div>
                   )
                   : (
-                    <button className="btn btn-outline-secondary">Help</button>
+                    <Link className="btn btn-outline-secondary" to={donorLink}>Donate Items</Link>
                   )
               }
           </div>

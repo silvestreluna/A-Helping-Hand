@@ -66,11 +66,6 @@ class EditPost extends React.Component {
       .catch(err => console.error(err, 'Nothing to update'));
   }
 
-
-  componentDidMount() {
-    this.getAllPostData();
-  }
-
   updatePost = (e) => {
     e.preventDefault();
     const postId = this.props.match.params.id;
@@ -128,6 +123,9 @@ class EditPost extends React.Component {
     this.setState({ item1 });
   }
 
+  componentDidMount() {
+    this.getAllPostData();
+  }
 
   render() {
     // const postId = this.props.match.params.id;

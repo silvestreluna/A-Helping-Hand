@@ -15,6 +15,7 @@ import postPage from '../components/PostPage/PostPage';
 import ProfilePage from '../components/ProfilePage/ProfilePage';
 import NewPostForm from '../components/NewPostForm/NewPostForm';
 import EditPost from '../components/EditPost/EditPost';
+import DonateItems from '../components/DonateItems/DonateItems';
 
 import './App.scss';
 // import Auth from '../components/Auth/Auth';
@@ -78,6 +79,7 @@ class App extends React.Component {
                   <PrivateRoute path='/user' component={ProfilePage} authed={authed} />
                   <PrivateRoute path='/newPost' component={NewPostForm} authed={authed} />
                   <PrivateRoute path='/editPost/:id' component={EditPost} authed={authed} />
+                  <PrivateRoute path='/donate/:id' component={DonateItems} authed={authed} />
                   <Redirect from="*" to="/home" />
                 </Switch>
               </div>
