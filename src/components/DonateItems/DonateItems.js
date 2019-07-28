@@ -39,6 +39,16 @@ class DonateItems extends React.Component {
       .catch(err => console.error(err, 'Nothing came back.'));
   }
 
+  addToHelperCounter = () => {
+    const { uid } = firebase.auth().currentUser;
+    const helperObj = {
+      donorUid: uid,
+    };
+    getData.addHelper(helperObj)
+      // .then()
+      .catch(err => console.error(err, 'Nothing updated'));
+  }
+
   donorCxl = (e) => {
     e.preventDefault();
     this.props.history.push('/posts');
@@ -50,7 +60,10 @@ class DonateItems extends React.Component {
       isPosted: false,
     };
     getData.editPost(updatedPost, postId)
-      .then(() => this.setState({ isDonating: true }))
+      .then(() => {
+        this.setState({ isDonating: true });
+        this.addToHelperCounter();
+      })
       .catch(err => console.error(err, 'Nothing updated'));
   }
 
@@ -71,7 +84,6 @@ class DonateItems extends React.Component {
         phNum={a.phNum}
         isDonating={isDonating} />
     ));
-    console.error(prodName, 'filterName');
     const listOfItem = prodName.map((item) => {
       if (item.prodName !== '') {
         return <li key={item.prodId}>{item.prodName}</li>;

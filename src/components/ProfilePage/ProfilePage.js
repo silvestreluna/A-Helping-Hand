@@ -71,9 +71,15 @@ class ProfilePage extends React.Component {
       }
       return userValue.loc;
     };
+    const displayNumOfHelped = () => {
+      if (helpedCount.length > 0) {
+        return <HelpedCounter helpedCount={helpedCount.length}/>;
+      }
+      return '';
+    };
     return (
       <div className="ProfilePage col">
-        <HelpedCounter helpedCount={helpedCount.length}/>
+        {displayNumOfHelped()}
         <div className="user m-5">
           <h5>Hello, {myInfo.displayName}</h5>
           <img src={myInfo.photoURL} alt="this user Img" className="img-thumbnail userImg" />

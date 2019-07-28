@@ -7,7 +7,7 @@ class HelpedCounter extends React.Component {
     return (
       <div className="HelpedCounter">
         <div className="alert alert-info" role="alert">
-          <p>You have helped {helpedCount} people! Thank you for making a difference!</p>
+          <p>You have helped {helpedCount} {(helpedCount > 1) ? ('People!') : ('Person!')} Thank you for making a difference!</p>
         </div>
       </div>
     );
