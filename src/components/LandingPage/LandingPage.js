@@ -1,5 +1,6 @@
 import React from 'react';
-import { Jumbotron, Button } from 'reactstrap';
+import { Jumbotron } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import AllPost from '../AllPost/AllPost';
 
 import './LandingPage.scss';
@@ -12,6 +13,9 @@ class LandingPage extends React.Component {
       itemsName,
     } = this.props;
 
+    const newPostLink = '/newPost';
+    const allPostLink = '/posts';
+
     return (
       <div className="LandingPage">
         <Jumbotron>
@@ -21,18 +25,18 @@ class LandingPage extends React.Component {
           <p>It uses utility classes for typography and spacing to space content out within
             the larger container.</p>
           <div>
-          <p className="lead">
-            <Button color="primary">I want to Help</Button>
-          </p>
-          <p className="lead">
-          <Button color="primary">I Need Help</Button>
-          </p>
+            <div>
+              <Link className="btn btn-primary m-2" to={newPostLink}>I want to Help</Link>
+            </div>
+            <div>
+              <Link className="btn btn-primary m-2" to={allPostLink}>I Need Help</Link>
+            </div>
           </div>
         </Jumbotron>
         <AllPost
           allPost={allPost}
           users={users}
-          itemsName={itemsName}/>
+          itemsName={itemsName} />
       </div>
     );
   }
