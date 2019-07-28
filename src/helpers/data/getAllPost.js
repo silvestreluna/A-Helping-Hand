@@ -36,6 +36,7 @@ const getItemProdById = postId => new Promise((resolve, reject) => {
 const getUser = uid => axios.get(`${firebaseUrl}/users.json?orderBy="uid"&equalTo="${uid}"`);
 
 const addNewPost = (newPost, postKey) => axios.put(`${firebaseUrl}/post/${postKey}.json`, newPost);
+const addHelper = helperObj => axios.post(`${firebaseUrl}/helpers.json`, helperObj);
 
 const editPost = (postObj, postId) => axios.patch(`${firebaseUrl}/post/${postId}.json`, postObj);
 
@@ -59,6 +60,8 @@ const addNewItem = newItem => axios.post(`${firebaseUrl}/items.json`, newItem);
 
 const deleteMyPost = postId => axios.delete(`${firebaseUrl}/post/${postId}.json`);
 
+const getHelperCountByUid = uid => axios.get(`${firebaseUrl}/helpers.json?orderBy="donorUid"&equalTo="${uid}"`);
+
 
 export default {
   getAllPost,
@@ -75,4 +78,6 @@ export default {
   getItemProdById,
   getUser,
   getAllProd,
+  getHelperCountByUid,
+  addHelper,
 };
