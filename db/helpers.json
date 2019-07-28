@@ -1,17 +1,14 @@
 {
   "helper1": {
     "id": "helper1",
-    "helperUid": "XKs7nATTXkXjAncQucTHFxQwzyq2",
-    "numHelped": 1
+    "donorUid": "XKs7nATTXkXjAncQucTHFxQwzyq2"
   },
   "helper2": {
     "id": "helper2",
-    "helperUid": "XKs7nATTXkXjAncQucTHFxQwzyq2",
-    "numHelped": 4
+    "donorUid": "XKs7nATTXkXjAncQucTHFxQwzyq2"
   },
   "helper3": {
     "id": "helper3",
-    "helperUid": "user1",
-    "numHelped": 3
+    "donorUid": "user1"
   }
 }

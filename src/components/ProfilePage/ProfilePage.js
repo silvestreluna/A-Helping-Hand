@@ -5,7 +5,7 @@ import AllPost from '../AllPost/AllPost';
 import allPostData from '../../helpers/data/getAllPost';
 import allUsers from '../../helpers/data/getUsers';
 import smash from '../../helpers/data/smashData';
-
+import HelpedCounter from '../HelpedCounter/HelpedCounter';
 
 import './ProfilePage.scss';
 
@@ -15,6 +15,7 @@ class ProfilePage extends React.Component {
     allPost: [],
     itemsName: [],
     users: [],
+    helpedCount: [],
   }
 
   getAllPostData = () => {
@@ -32,6 +33,10 @@ class ProfilePage extends React.Component {
 
     allUsers.getUsers()
       .then(users => this.setState({ users }))
+      .catch(err => console.error(err, 'Nothing came back.'));
+
+    allPostData.getHelperCountByUid(uid)
+      .then(res => this.setState({ helpedCount: Object.values(res.data) }))
       .catch(err => console.error(err, 'Nothing came back.'));
   }
 
@@ -52,6 +57,7 @@ class ProfilePage extends React.Component {
       allPost,
       itemsName,
       users,
+      helpedCount,
     } = this.state;
 
     const myInfo = firebase.auth().currentUser;
@@ -65,24 +71,24 @@ class ProfilePage extends React.Component {
       }
       return userValue.loc;
     };
-
     return (
       <div className="ProfilePage col">
+        <HelpedCounter helpedCount={helpedCount.length}/>
         <div className="user m-5">
           <h5>Hello, {myInfo.displayName}</h5>
-          <img src={myInfo.photoURL} alt="this user Img" className="img-thumbnail userImg"/>
+          <img src={myInfo.photoURL} alt="this user Img" className="img-thumbnail userImg" />
           <div className="border p-3">
             <p>Email: {myInfo.email}</p>
             <p>Location: {user()}</p>
           </div>
         </div>
         <div className="col">
-        <AllPost
-          allPost={allPost}
-          myInfo={myInfo.uid}
-          users={users}
-          deletePost={this.deletePost}
-          itemsName={itemsName}/>
+          <AllPost
+            allPost={allPost}
+            myInfo={myInfo.uid}
+            users={users}
+            deletePost={this.deletePost}
+            itemsName={itemsName} />
         </div>
       </div>
     );

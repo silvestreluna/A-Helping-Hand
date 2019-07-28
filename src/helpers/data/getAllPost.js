@@ -59,6 +59,8 @@ const addNewItem = newItem => axios.post(`${firebaseUrl}/items.json`, newItem);
 
 const deleteMyPost = postId => axios.delete(`${firebaseUrl}/post/${postId}.json`);
 
+const getHelperCountByUid = uid => axios.get(`${firebaseUrl}/helpers.json?orderBy="donorUid"&equalTo="${uid}"`);
+
 
 export default {
   getAllPost,
@@ -75,4 +77,5 @@ export default {
   getItemProdById,
   getUser,
   getAllProd,
+  getHelperCountByUid,
 };
