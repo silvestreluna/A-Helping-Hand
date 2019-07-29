@@ -6,6 +6,7 @@ import allPostData from '../../helpers/data/getAllPost';
 import allUsers from '../../helpers/data/getUsers';
 import smash from '../../helpers/data/smashData';
 import HelpedCounter from '../HelpedCounter/HelpedCounter';
+import PendingDonation from '../PendingDonation/PendingDonation';
 
 import './ProfilePage.scss';
 
@@ -95,6 +96,13 @@ class ProfilePage extends React.Component {
             users={users}
             deletePost={this.deletePost}
             itemsName={itemsName} />
+        </div>
+        <div>
+          <PendingDonation
+          allPost={allPost}
+          users={users}
+          deletePost={this.deletePost}
+          itemsName={itemsName} />
         </div>
       </div>
     );

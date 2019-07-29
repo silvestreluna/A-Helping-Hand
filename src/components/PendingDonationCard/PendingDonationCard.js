@@ -1,8 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 
-class EachPost extends React.Component {
+class PendingDonationCard extends React.Component {
   deleteMyPost = (e) => {
     e.preventDefault();
     const currentId = e.target.value;
@@ -14,11 +14,11 @@ class EachPost extends React.Component {
       post,
       userName,
       prodName,
-      myInfo,
+      // myInfo,
     } = this.props;
 
-    const editLink = `/editPost/${post.id}`;
-    const donorLink = `/donate/${post.id}`;
+    // const editLink = `/editPost/${post.id}`;
+    // const usersPage = '/users';
 
     const postItems = prodName.map((item) => {
       if (item.prodName === '') {
@@ -28,8 +28,11 @@ class EachPost extends React.Component {
     });
 
     return (
-      <div className="EachPost col-3">
+      <div className="PendingDonationCard col-3">
         <div className="card text-center">
+          <div className="alert alert-warning" role="alert">
+            <h5>Silvestre will be contacting you soon to donate the requested item(s).</h5>
+          </div>
           <div className="card-body">
             <h5 className="card-title">{userName.fName}</h5>
             <p className="card-text">{userName.loc}</p>
@@ -40,18 +43,10 @@ class EachPost extends React.Component {
                 {postItems}
               </ul>
             </div>
-            {
-              (myInfo === userName.uid)
-                ? (
-                  <div>
-                    <Link className="btn btn-primary" to={editLink}>Edit</Link>
-                    <button value={post.id} className="btn btn-danger" onClick={this.deleteMyPost}>Delete Post</button>
-                  </div>
-                )
-                : (
-                  <Link className="btn btn-outline-secondary" to={donorLink}>Donate Items</Link>
-                )
-            }
+            <div>
+              <button>Remove from Pending Status</button>
+              <button value={post.id} className="btn btn-danger" onClick={this.deleteMyPost}>Delete Post</button>
+            </div>
           </div>
         </div>
       </div>
@@ -59,4 +54,4 @@ class EachPost extends React.Component {
   }
 }
 
-export default EachPost;
+export default PendingDonationCard;
