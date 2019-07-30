@@ -41,10 +41,6 @@ class ProfilePage extends React.Component {
       .catch(err => console.error(err, 'Nothing came back.'));
   }
 
-  componentDidMount() {
-    this.getAllPostData();
-  }
-
   deletePost = (postId) => {
     allPostData.deleteMyPost(postId)
       .then(() => {
@@ -52,6 +48,22 @@ class ProfilePage extends React.Component {
       })
       .catch(err => console.error(err, 'Nothing to delete'));
   }
+
+  changePostStatus = (postId) => {
+    const updatedObj = {
+      isPosted: true,
+    };
+    allPostData.editPost(updatedObj, postId)
+      .then(() => {
+        this.getAllPostData();
+      })
+      .catch(err => console.error(err, 'Nothing to update'));
+  }
+
+  componentDidMount() {
+    this.getAllPostData();
+  }
+
 
   render() {
     const {
@@ -95,6 +107,7 @@ class ProfilePage extends React.Component {
             myInfo={myInfo.uid}
             users={users}
             deletePost={this.deletePost}
+            changePostStatus={this.changePostStatus}
             itemsName={itemsName} />
         </div>
         <div>
@@ -102,6 +115,7 @@ class ProfilePage extends React.Component {
           allPost={allPost}
           users={users}
           deletePost={this.deletePost}
+          changePostStatus={this.changePostStatus}
           itemsName={itemsName} />
         </div>
       </div>

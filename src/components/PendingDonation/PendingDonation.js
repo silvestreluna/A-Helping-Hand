@@ -5,23 +5,6 @@ import PendingDonationCard from '../PendingDonationCard/PendingDonationCard';
 
 
 class PendingDonation extends React.Component {
-  // render() {
-  //   const posts = this.props.allPost;
-  //   const { users, itemsName } = this.props;
-  //   const currentUserUid = firebase.auth().currentUser.uid;
-
-  //   // Calling this as allpost so I can pass as props.
-  //   // Filtered from allPost by this user uid and
-  //   // post.isPosted === false.
-  //   // This leaves all post that are in pendingDonation status.
-  //   const allPost = posts.filter(post => post.uid === currentUserUid && post.isPosted === false);
-  //   console.error(allPost);
-  //   return (
-  //     <div className="PendingDonation">
-  //       <PendingDonationCard allPost={allPost}/>
-  //     </div>
-  //   );
-  // }
   render() {
     const {
       allPost,
@@ -29,6 +12,7 @@ class PendingDonation extends React.Component {
       users,
       // myInfo,
       deletePost,
+      changePostStatus,
     } = this.props;
 
     const eachPost = allPost.map((post) => {
@@ -37,9 +21,11 @@ class PendingDonation extends React.Component {
         const prodName = itemsName.filter(a => a.postId === post.id);
         return <PendingDonationCard key={post.id}
           userName={userName}
+          users={users}
           prodName={prodName}
           // myInfo={myInfo}
           deletePost={deletePost}
+          changePostStatus={changePostStatus}
           post={post} />;
       }
       return [];

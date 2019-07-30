@@ -1,6 +1,4 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
-
 
 class PendingDonationCard extends React.Component {
   deleteMyPost = (e) => {
@@ -9,17 +7,19 @@ class PendingDonationCard extends React.Component {
     this.props.deletePost(currentId);
   }
 
+  removeFromPendingStat = (e) => {
+    e.preventDefault();
+    const cardId = e.target.value;
+    this.props.changePostStatus(cardId);
+  }
+
   render() {
     const {
       post,
       userName,
+      // users,
       prodName,
-      // myInfo,
     } = this.props;
-
-    // const editLink = `/editPost/${post.id}`;
-    // const usersPage = '/users';
-
     const postItems = prodName.map((item) => {
       if (item.prodName === '') {
         return '';
@@ -31,7 +31,7 @@ class PendingDonationCard extends React.Component {
       <div className="PendingDonationCard col-3">
         <div className="card text-center">
           <div className="alert alert-warning" role="alert">
-            <h5>Silvestre will be contacting you soon to donate the requested item(s).</h5>
+            <h5>Someone will be contacting you soon to donate the requested item(s).</h5>
           </div>
           <div className="card-body">
             <h5 className="card-title">{userName.fName}</h5>
@@ -44,7 +44,7 @@ class PendingDonationCard extends React.Component {
               </ul>
             </div>
             <div>
-              <button>Remove from Pending Status</button>
+              <button value={post.id}className="btn btn-info" onClick={this.removeFromPendingStat}>Remove from Pending Status</button>
               <button value={post.id} className="btn btn-danger" onClick={this.deleteMyPost}>Delete Post</button>
             </div>
           </div>

@@ -9,6 +9,7 @@ class AllPost extends React.Component {
       users,
       myInfo,
       deletePost,
+      changePostStatus,
     } = this.props;
 
     const eachPost = allPost.map((post) => {
@@ -20,6 +21,7 @@ class AllPost extends React.Component {
           prodName={prodName}
           myInfo={myInfo}
           deletePost={deletePost}
+          changePostStatus={changePostStatus}
           post={post} />;
       }
       return [];
