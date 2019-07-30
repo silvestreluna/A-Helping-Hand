@@ -1,7 +1,8 @@
 {
   "helper1": {
     "id": "helper1",
-    "donorUid": "XKs7nATTXkXjAncQucTHFxQwzyq2"
+    "donorUid": "XKs7nATTXkXjAncQucTHFxQwzyq2",
+    "postId": "post1"
   },
   "helper2": {
     "id": "helper2",
@@ -9,6 +10,7 @@
   },
   "helper3": {
     "id": "helper3",
-    "donorUid": "user1"
+    "donorUid": "user1",
+    "postId": "post2"
   }
 }

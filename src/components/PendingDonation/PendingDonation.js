@@ -1,25 +1,29 @@
 import React from 'react';
-import EachPost from '../EachPost/Eachpost';
+// import firebase from 'firebase/app';
+// import 'firebase/auth';
+import PendingDonationCard from '../PendingDonationCard/PendingDonationCard';
 
-class AllPost extends React.Component {
+
+class PendingDonation extends React.Component {
   render() {
     const {
       allPost,
       itemsName,
       users,
-      myInfo,
+      // myInfo,
       deletePost,
       changePostStatus,
     } = this.props;
 
     const eachPost = allPost.map((post) => {
-      if (users.length && itemsName.length && post.isPosted === true) {
+      if (users.length && itemsName.length && post.isPosted === false) {
         const userName = users.find(user => user.uid === post.uid);
         const prodName = itemsName.filter(a => a.postId === post.id);
-        return <EachPost key={post.id}
+        return <PendingDonationCard key={post.id}
           userName={userName}
+          users={users}
           prodName={prodName}
-          myInfo={myInfo}
+          // myInfo={myInfo}
           deletePost={deletePost}
           changePostStatus={changePostStatus}
           post={post} />;
@@ -37,4 +41,4 @@ class AllPost extends React.Component {
   }
 }
 
-export default AllPost;
+export default PendingDonation;

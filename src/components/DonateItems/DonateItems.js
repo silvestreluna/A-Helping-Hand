@@ -41,8 +41,11 @@ class DonateItems extends React.Component {
 
   addToHelperCounter = () => {
     const { uid } = firebase.auth().currentUser;
+    const postId = this.props.match.params.id;
+
     const helperObj = {
       donorUid: uid,
+      postId,
     };
     getData.addHelper(helperObj)
       // .then()
