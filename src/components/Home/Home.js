@@ -1,15 +1,18 @@
 import React from 'react';
+import firebase from 'firebase/app';
+import 'firebase/auth';
 import allPostData from '../../helpers/data/getAllPost';
 import allUsers from '../../helpers/data/getUsers';
 import smash from '../../helpers/data/smashData';
-
 import LandingPage from '../LandingPage/LandingPage';
+import NewUserForm from '../NewUserForm/NewUserForm';
 
 class Home extends React.Component {
   state = {
     allPost: [],
     itemsName: [],
     users: [],
+    newUser: {},
   }
 
   getAllPostData = () => {
@@ -26,8 +29,22 @@ class Home extends React.Component {
       .catch(err => console.error(err, 'Nothing came back.'));
   }
 
+  getUser = () => {
+    if (this.props.authed) {
+      const { uid } = firebase.auth().currentUser;
+      allPostData.getUser(uid)
+        .then((res) => {
+          if (Object.values(res.data)[0] !== undefined) {
+            this.setState({ newUser: Object.values(res.data)[0] });
+          }
+        })
+        .catch(err => console.error(err, 'Nothing came back'));
+    }
+  }
+
   componentDidMount() {
     this.getAllPostData();
+    this.getUser();
   }
 
   render() {
@@ -35,16 +52,28 @@ class Home extends React.Component {
       allPost,
       itemsName,
       users,
+      newUser,
+      // authed,
     } = this.state;
+    const { authed } = this.props;
+    console.error(newUser);
+    console.error(authed, 'auth');
 
+    const loadNewUserForm = Object.keys(newUser).length === 0 ? (<NewUserForm />) : (<LandingPage allPost={allPost} itemsName={itemsName} users={users} />);
     return (
       <div className="Home col">
         <div className="links">
         </div>
-        <LandingPage
-        allPost={allPost}
-        itemsName={itemsName}
-        users={users}/>
+        {
+          (authed) ? (loadNewUserForm)
+            : (
+              <LandingPage
+                allPost={allPost}
+                itemsName={itemsName}
+                // newUser={newUser}
+                users={users} />
+            )
+        }
       </div>
     );
   }

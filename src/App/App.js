@@ -16,6 +16,7 @@ import ProfilePage from '../components/ProfilePage/ProfilePage';
 import NewPostForm from '../components/NewPostForm/NewPostForm';
 import EditPost from '../components/EditPost/EditPost';
 import DonateItems from '../components/DonateItems/DonateItems';
+// import NewUser from '../components/NewUser/NewUser';
 
 import './App.scss';
 // import Auth from '../components/Auth/Auth';
@@ -24,7 +25,7 @@ fbConnection();
 
 const PublicRoute = ({ component: Component, authed, ...rest }) => {
   const routeChecker = props => (authed === false
-    ? (<Component {...props}/>)
+    ? (<Component authed={authed} {...props}/>)
     : (
       (<Redirect to={{ pathname: '/home', state: { from: props.location } }} />)
     )
@@ -34,7 +35,7 @@ const PublicRoute = ({ component: Component, authed, ...rest }) => {
 
 const PrivateRoute = ({ component: Component, authed, ...rest }) => {
   const routeChecker = props => (authed === true
-    ? (<Component {...props}/>)
+    ? (<Component authed={authed} {...props}/>)
     : (
       (<Redirect to={{ pathname: '/auth', state: { from: props.location } }} />)
     )
@@ -80,6 +81,8 @@ class App extends React.Component {
                   <PrivateRoute path='/newPost' component={NewPostForm} authed={authed} />
                   <PrivateRoute path='/editPost/:id' component={EditPost} authed={authed} />
                   <PrivateRoute path='/donate/:id' component={DonateItems} authed={authed} />
+                  {/* <PrivateRoute path='/newUser' component={NewUser} authed={authed} /> */}
+
                   <Redirect from="*" to="/home" />
                 </Switch>
               </div>

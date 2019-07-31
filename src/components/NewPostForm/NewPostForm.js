@@ -16,13 +16,6 @@ import ListItems from '../ListItems/ListItems';
 import prodName from '../../helpers/data/smashData';
 
 
-// const defaultPost = {
-//   story: '',
-//   item1: '',
-//   prodName: [],
-
-// };
-
 class NewPostForm extends React.Component {
   state = {
     // newPost: defaultPost,
@@ -53,10 +46,6 @@ class NewPostForm extends React.Component {
     e.preventDefault();
     this.setState({ item1: e.target.value });
   }
-
-  // userStory = e => this.formFieldStringState('story', e);
-
-  // userItem1 = e => this.formFieldStringState('item1', e);
 
   putApost = (e) => {
     e.preventDefault();
