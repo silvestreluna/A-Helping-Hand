@@ -1,4 +1,7 @@
 import React from 'react';
+import firebase from 'firebase/app';
+import 'firebase/auth';
+import allData from '../../helpers/data/getAllPost';
 
 
 class NewUser extends React.Component {
@@ -31,6 +34,22 @@ class NewUser extends React.Component {
 
   createUser = (e) => {
     e.preventDefault();
+    const { uid } = firebase.auth().currentUser;
+    const { email } = firebase.auth().currentUser;
+
+    const newUserObj = {
+      uid,
+      fName: this.state.fName,
+      lName: this.state.lName,
+      loc: this.state.loc,
+      phNum: this.state.phNum,
+      email,
+    };
+    allData.addNewUser(newUserObj)
+      .then(() => {
+        this.props.reloadUser();
+      })
+      .catch(err => console.error(err, 'Nothing was posted'));
   };
 
   render() {
@@ -42,7 +61,6 @@ class NewUser extends React.Component {
     } = this.state;
     return (
       <div className="NewUser">
-        <h3>New User</h3>
         <div className="col-12 vh-100 d-flex align-items-center px-0">
           <div className="container">
             <div className="card">
@@ -50,15 +68,16 @@ class NewUser extends React.Component {
                 <div className="row no-gutters">
                   <div className="col-md-12">
                     <div className="card-body text-center mx-5">
-                      <h5 className="lead font-weight-bold mb-5 text-center">Create Profile</h5>
+                      <div className="alert alert-primary" role="alert">
+                        <p>Need a little more information from you. Please provide the following information.</p>
+                      </div>
                       <form onSubmit={this.createUser}>
-                        <input type="text" className="form-control mb-4" placeholder="First Name" value={fName} onChange={this.fNameChangeHandler}/>
+                        <input type="text" className="form-control mb-4" placeholder="First Name" value={fName} onChange={this.fNameChangeHandler} />
                         <input type="text" className="form-control mb-4" placeholder="Last Name" value={lName} onChange={this.lNameChangeHandler} />
-                        <input type="text" className="form-control mb-4" placeholder="City" value={loc} onChange={this.cityChangeHandler}/>
-                        <input type="text" className="form-control mb-4" placeholder="Phone Number" value={phNum} onChange={this.phNumChangeHandler}/>
+                        <input type="text" className="form-control mb-4" placeholder="City and State" value={loc} onChange={this.cityChangeHandler} />
+                        <input type="number" className="form-control mb-4" placeholder="Phone Number" value={phNum} onChange={this.phNumChangeHandler} />
                         <div>
                           <button type="submit" className="btn btn-primary px-3 mr-3">Create</button>
-                          {/* <Link to="/home" className="btn btn-dark px-3"><i className="fas fa-address-card pr-1"></i> Back to Home</Link> */}
                         </div>
                       </form>
                     </div>

@@ -26,10 +26,10 @@ class LandingPage extends React.Component {
             the larger container.</p>
           <div>
             <div>
-              <Link className="btn btn-primary m-2" to={newPostLink}>I want to Help</Link>
+              <Link className="btn btn-primary m-2" to={allPostLink}>I want to Help</Link>
             </div>
             <div>
-              <Link className="btn btn-primary m-2" to={allPostLink}>I Need Help</Link>
+              <Link className="btn btn-primary m-2" to={newPostLink}>I Need Help</Link>
             </div>
           </div>
         </Jumbotron>

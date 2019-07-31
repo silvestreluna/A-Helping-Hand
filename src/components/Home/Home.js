@@ -42,6 +42,10 @@ class Home extends React.Component {
     }
   }
 
+  reloadUser = () => {
+    this.getUser();
+  }
+
   componentDidMount() {
     this.getAllPostData();
     this.getUser();
@@ -56,10 +60,7 @@ class Home extends React.Component {
       // authed,
     } = this.state;
     const { authed } = this.props;
-    console.error(newUser);
-    console.error(authed, 'auth');
-
-    const loadNewUserForm = Object.keys(newUser).length === 0 ? (<NewUserForm />) : (<LandingPage allPost={allPost} itemsName={itemsName} users={users} />);
+    const loadNewUserForm = Object.keys(newUser).length === 0 ? (<NewUserForm reloadUser={this.reloadUser}/>) : (<LandingPage allPost={allPost} itemsName={itemsName} users={users} />);
     return (
       <div className="Home col">
         <div className="links">
