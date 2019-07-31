@@ -59,6 +59,8 @@ const getAllProd = () => axios.get(`${firebaseUrl}/products.json`);
 const addNewProd = (newProd, prodId) => axios.put(`${firebaseUrl}/products/${prodId}.json`, newProd);
 
 const addNewItem = newItem => axios.post(`${firebaseUrl}/items.json`, newItem);
+const addNewUser = newUserObj => axios.post(`${firebaseUrl}/users.json`, newUserObj);
+
 
 const deleteMyPost = postId => axios.delete(`${firebaseUrl}/post/${postId}.json`);
 
@@ -83,4 +85,5 @@ export default {
   getHelperCountByUid,
   addHelper,
   getHelperByPostId,
+  addNewUser,
 };
