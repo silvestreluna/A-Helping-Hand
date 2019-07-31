@@ -91,7 +91,7 @@ class ProfilePage extends React.Component {
       return '';
     };
     return (
-      <div className="ProfilePage col">
+      <div className="ProfilePage">
         {displayNumOfHelped()}
         <div className="user m-5">
           <h5>Hello, {myInfo.displayName}</h5>
@@ -101,7 +101,7 @@ class ProfilePage extends React.Component {
             <p>Location: {user()}</p>
           </div>
         </div>
-        <div className="col">
+        <div>
           <AllPost
             allPost={allPost}
             myInfo={myInfo.uid}

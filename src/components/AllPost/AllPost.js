@@ -29,8 +29,10 @@ class AllPost extends React.Component {
 
     return (
       <div className="AllPost">
-        <div className="d-flex m-5">
+        <div className="container">
+        <div className="row mt-5">
           {eachPost}
+        </div>
         </div>
       </div>
     );

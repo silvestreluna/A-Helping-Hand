@@ -28,7 +28,7 @@ class EachPost extends React.Component {
     });
 
     return (
-      <div className="EachPost col-3">
+      <div className="EachPost col-md-3 mb-5">
         <div className="card text-center">
           <div className="card-body">
             <h5 className="card-title">{userName.fName}</h5>

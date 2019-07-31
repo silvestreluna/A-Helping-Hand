@@ -25,22 +25,22 @@ fbConnection();
 
 const PublicRoute = ({ component: Component, authed, ...rest }) => {
   const routeChecker = props => (authed === false
-    ? (<Component authed={authed} {...props}/>)
+    ? (<Component authed={authed} {...props} />)
     : (
       (<Redirect to={{ pathname: '/home', state: { from: props.location } }} />)
     )
   );
-  return <Route {...rest} render={props => routeChecker(props)}/>;
+  return <Route {...rest} render={props => routeChecker(props)} />;
 };
 
 const PrivateRoute = ({ component: Component, authed, ...rest }) => {
   const routeChecker = props => (authed === true
-    ? (<Component authed={authed} {...props}/>)
+    ? (<Component authed={authed} {...props} />)
     : (
       (<Redirect to={{ pathname: '/auth', state: { from: props.location } }} />)
     )
   );
-  return <Route {...rest} render={props => routeChecker(props)}/>;
+  return <Route {...rest} render={props => routeChecker(props)} />;
 };
 
 class App extends React.Component {
@@ -71,22 +71,17 @@ class App extends React.Component {
         <BrowserRouter>
           <React.Fragment>
             <MyNavBar authed={authed} />
-            <div className="container">
-              <div className="row">
-                <Switch>
-                  <PublicRoute path='/auth' component={Home} authed={authed} />
-                  <PrivateRoute path='/home' component={Home} authed={authed} />
-                  <PrivateRoute path='/posts' component={postPage} authed={authed} />
-                  <PrivateRoute path='/user' component={ProfilePage} authed={authed} />
-                  <PrivateRoute path='/newPost' component={NewPostForm} authed={authed} />
-                  <PrivateRoute path='/editPost/:id' component={EditPost} authed={authed} />
-                  <PrivateRoute path='/donate/:id' component={DonateItems} authed={authed} />
-                  {/* <PrivateRoute path='/newUser' component={NewUser} authed={authed} /> */}
-
-                  <Redirect from="*" to="/home" />
-                </Switch>
-              </div>
-            </div>
+            <Switch>
+              <PublicRoute path='/auth' component={Home} authed={authed} />
+              <PrivateRoute path='/home' component={Home} authed={authed} />
+              <PrivateRoute path='/posts' component={postPage} authed={authed} />
+              <PrivateRoute path='/user' component={ProfilePage} authed={authed} />
+              <PrivateRoute path='/newPost' component={NewPostForm} authed={authed} />
+              <PrivateRoute path='/editPost/:id' component={EditPost} authed={authed} />
+              <PrivateRoute path='/donate/:id' component={DonateItems} authed={authed} />
+              {/* <PrivateRoute path='/newUser' component={NewUser} authed={authed} /> */}
+              <Redirect from="*" to="/home" />
+            </Switch>
           </React.Fragment>
         </BrowserRouter>
       </div>
