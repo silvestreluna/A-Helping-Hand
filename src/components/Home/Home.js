@@ -62,16 +62,13 @@ class Home extends React.Component {
     const { authed } = this.props;
     const loadNewUserForm = Object.keys(newUser).length === 0 ? (<NewUserForm reloadUser={this.reloadUser}/>) : (<LandingPage allPost={allPost} itemsName={itemsName} users={users} />);
     return (
-      <div className="Home col">
-        <div className="links">
-        </div>
+      <div className="Home">
         {
           (authed) ? (loadNewUserForm)
             : (
               <LandingPage
                 allPost={allPost}
                 itemsName={itemsName}
-                // newUser={newUser}
                 users={users} />
             )
         }

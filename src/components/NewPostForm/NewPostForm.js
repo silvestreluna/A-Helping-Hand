@@ -112,7 +112,7 @@ class NewPostForm extends React.Component {
     const filteredItem = smashItemName.filter(a => a.postId === newPostId);
 
     return (
-      <div className="NewPostForm">
+      <div className="NewPostForm col-6">
         <h3>New Form</h3>
         <div>
           <Form>

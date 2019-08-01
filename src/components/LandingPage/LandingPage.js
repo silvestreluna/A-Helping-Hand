@@ -18,6 +18,7 @@ class LandingPage extends React.Component {
 
     return (
       <div className="LandingPage">
+        <div className="container">
         <Jumbotron>
           <h4 className="display-3">Welcome to A Helping Hand!</h4>
           <p className="lead">This is a simple hero unit, a simple Jumbotron-style component for calling extra attention to featured content or information.</p>
@@ -33,6 +34,7 @@ class LandingPage extends React.Component {
             </div>
           </div>
         </Jumbotron>
+        </div>
         <AllPost
           allPost={allPost}
           users={users}
