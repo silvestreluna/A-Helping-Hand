@@ -7,6 +7,7 @@ import smash from '../../helpers/data/smashData';
 import LandingPage from '../LandingPage/LandingPage';
 import NewUserForm from '../NewUserForm/NewUserForm';
 
+
 class Home extends React.Component {
   state = {
     allPost: [],

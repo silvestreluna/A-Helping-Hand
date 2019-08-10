@@ -14,6 +14,7 @@ import util from '../../helpers/util';
 import getData from '../../helpers/data/getAllPost';
 import ListItems from '../ListItems/ListItems';
 import prodName from '../../helpers/data/smashData';
+import './NewPostForm.scss';
 
 
 class NewPostForm extends React.Component {
@@ -112,43 +113,42 @@ class NewPostForm extends React.Component {
     const filteredItem = smashItemName.filter(a => a.postId === newPostId);
 
     return (
-      <div className="NewPostForm col-6">
-        <h3>New Form</h3>
-        <div>
-          <Form>
-            {
-              (newPostId)
-                ? (<h5>{story}</h5>)
-                : (
+      <div className="NewPostForm">
+        <Form>
+          {
+            (newPostId)
+              ? (<h3>Story: {story}</h3>)
+              : (
+                <div className="story-form">
                   <FormGroup>
                     <Label for="story">Your Story</Label>
                     <Input type="textarea" name="text" id="story" value={story} onChange={this.userStory} required />
                   </FormGroup>
-                )
-            }
-            {/* <ListItems /> */}
-            {
-              (newPostId) ? (
-                <FormGroup>
-                  <ListItems filteredItem={filteredItem} />
-                  <Label for="item1"></Label>
-                  <Input type="text" name="text" id="item1" placeholder="Item I need.." value={item1} onChange={this.userItem1} />
-                  <Button className="btn btn-primary m-2" onClick={this.postNewProdAndItem}>+ More Item</Button>
-                </FormGroup>
-              ) : (
-                ''
+                </div>
               )
-            }
+          }
+          {/* <ListItems /> */}
+          {
+            (newPostId) ? (
+              <FormGroup>
+                <ListItems filteredItem={filteredItem} />
+                <Label for="item1"></Label>
+                <Input type="text" name="text" id="item1" placeholder="Item I need.." value={item1} onChange={this.userItem1} />
+                <Button className="btn btn-primary m-2" onClick={this.postNewProdAndItem}>+ More Item</Button>
+              </FormGroup>
+            ) : (
+              ''
+            )
+          }
 
-            {
-              (newPostId) ? (
-                <input type="submit" value="Submit" className="btn btn-secondary m-5" onClick={this.completePost} />
-              ) : (
-                  <input type="submit" value="Next" className="btn btn-secondary m-5" onClick={this.putApost} />
-              )
-            }
-          </Form>
-        </div>
+          {
+            (newPostId) ? (
+              <input type="submit" value="Submit" className="btn btn-secondary m-5" onClick={this.completePost} />
+            ) : (
+                <input type="submit" value="Next" className="btn btn-secondary m-5" onClick={this.putApost} />
+            )
+          }
+        </Form>
       </div>
     );
   }

@@ -71,17 +71,18 @@ class App extends React.Component {
         <BrowserRouter>
           <React.Fragment>
             <MyNavBar authed={authed} />
-            <Switch>
-              <PublicRoute path='/auth' component={Home} authed={authed} />
-              <PrivateRoute path='/home' component={Home} authed={authed} />
-              <PrivateRoute path='/posts' component={postPage} authed={authed} />
-              <PrivateRoute path='/user' component={ProfilePage} authed={authed} />
-              <PrivateRoute path='/newPost' component={NewPostForm} authed={authed} />
-              <PrivateRoute path='/editPost/:id' component={EditPost} authed={authed} />
-              <PrivateRoute path='/donate/:id' component={DonateItems} authed={authed} />
-              {/* <PrivateRoute path='/newUser' component={NewUser} authed={authed} /> */}
-              <Redirect from="*" to="/home" />
-            </Switch>
+            <div className="comp-pages">
+              <Switch>
+                <PublicRoute path='/auth' component={Home} authed={authed} />
+                <PrivateRoute path='/home' component={Home} authed={authed} />
+                <PrivateRoute path='/posts' component={postPage} authed={authed} />
+                <PrivateRoute path='/user' component={ProfilePage} authed={authed} />
+                <PrivateRoute path='/newPost' component={NewPostForm} authed={authed} />
+                <PrivateRoute path='/editPost/:id' component={EditPost} authed={authed} />
+                <PrivateRoute path='/donate/:id' component={DonateItems} authed={authed} />
+                <Redirect from="*" to="/home" />
+              </Switch>
+            </div>
           </React.Fragment>
         </BrowserRouter>
       </div>
