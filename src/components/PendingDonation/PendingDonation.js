@@ -1,6 +1,4 @@
 import React from 'react';
-// import firebase from 'firebase/app';
-// import 'firebase/auth';
 import PendingDonationCard from '../PendingDonationCard/PendingDonationCard';
 
 
@@ -32,9 +30,11 @@ class PendingDonation extends React.Component {
     });
 
     return (
-      <div className="AllPost">
-        <div className="d-flex m-5">
+      <div className="PendingDonation">
+        <div className="container">
+          <div className="row">
           {eachPost}
+          </div>
         </div>
       </div>
     );

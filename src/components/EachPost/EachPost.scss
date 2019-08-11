@@ -59,6 +59,13 @@
   }
 }
 
+.dltEdit-buttons-wrapper {
+  display: flex;
+  justify-content: space-around;
+  text-transform: uppercase;
+  text-align: center;
+}
+
 .post-footer {
   display: flex;
   justify-content: space-between;

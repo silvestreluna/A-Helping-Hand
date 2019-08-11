@@ -1,3 +1,19 @@
 .PendingDonationCard {
   display: block;
+  .card {
+    border-radius: 8px !important;
+    box-shadow: 4px 4px 4px rgba(89, 90, 91, .3);
+  }
+  .pend-post-header {
+    border-radius: 8px 8px 0 0;
+  }
+  .buttons-wrapper {
+    display: flex;
+    flex-direction: column;
+    .add-post-back, 
+    .dlt-post {
+      padding: 10px;
+      font-size: 10px;
+    }
+  }
 }

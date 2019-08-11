@@ -86,14 +86,16 @@ class ProfilePage extends React.Component {
     };
     const displayNumOfHelped = () => {
       if (helpedCount.length > 0) {
-        return <HelpedCounter helpedCount={helpedCount.length}/>;
+        return <HelpedCounter helpedCount={helpedCount.length} />;
       }
       return '';
     };
     return (
       <div className="ProfilePage">
-        {displayNumOfHelped()}
-        <div className="user m-5">
+        <div className="count-alert">
+          {displayNumOfHelped()}
+        </div>
+        <div className="user-info">
           <h5>Hello, {myInfo.displayName}</h5>
           <img src={myInfo.photoURL} alt="this user Img" className="img-thumbnail userImg" />
           <div className="border p-3">
@@ -101,7 +103,7 @@ class ProfilePage extends React.Component {
             <p>Location: {user()}</p>
           </div>
         </div>
-        <div>
+        <div className="col">
           <AllPost
             allPost={allPost}
             myInfo={myInfo.uid}
@@ -110,13 +112,13 @@ class ProfilePage extends React.Component {
             changePostStatus={this.changePostStatus}
             itemsName={itemsName} />
         </div>
-        <div>
+        <div className="col">
           <PendingDonation
-          allPost={allPost}
-          users={users}
-          deletePost={this.deletePost}
-          changePostStatus={this.changePostStatus}
-          itemsName={itemsName} />
+            allPost={allPost}
+            users={users}
+            deletePost={this.deletePost}
+            changePostStatus={this.changePostStatus}
+            itemsName={itemsName} />
         </div>
       </div>
     );

@@ -30,7 +30,7 @@ class EachPost extends React.Component {
     });
 
     return (
-      <div className="EachPost col-3 mb-5">
+      <div className="EachPost col-md-4 mb-5">
         <div className="card text-center">
           <div className="post-header">
             <p className="card-text">{post.postDate}</p>
@@ -48,9 +48,9 @@ class EachPost extends React.Component {
               {
                 (myInfo === userName.uid)
                   ? (
-                    <div>
-                      <Link className="btn btn-primary" to={editLink}>Edit</Link>
-                      <button value={post.id} className="btn btn-danger" onClick={this.deleteMyPost}>Delete Post</button>
+                    <div className="dltEdit-buttons-wrapper">
+                      <Link className="btn btn-outline-primary edit-btn" to={editLink}>Edit</Link>
+                      <button value={post.id} className="btn btn-outline-danger dlt-btn" onClick={this.deleteMyPost}>Delete</button>
                     </div>
                   )
                   : (
@@ -60,7 +60,7 @@ class EachPost extends React.Component {
             </div>
             <div className="post-footer">
               <span className="card-title">{userName.fName}</span>
-              <span className="card-text">{userName.loc}</span>
+              <span className="card-text"><i className="fas fa-map-marker-alt"></i> {userName.loc}</span>
             </div>
           </div>
         </div>
