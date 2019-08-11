@@ -2,6 +2,7 @@ import React from 'react';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import allData from '../../helpers/data/getAllPost';
+import './NewUserForm.scss';
 
 
 class NewUser extends React.Component {

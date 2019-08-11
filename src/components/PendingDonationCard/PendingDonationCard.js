@@ -47,8 +47,8 @@ class PendingDonationCard extends React.Component {
               </ul>
             </div>
             <div className="buttons-wrapper">
-              <button value={post.id} className="btn btn-info add-post-back" onClick={this.removeFromPendingStat}>Remove from Pending Status</button>
-              <button value={post.id} className="btn btn-danger dlt-post" onClick={this.deleteMyPost}>Delete</button>
+              <button value={post.id} className="btn btn-outline-info add-post-back" onClick={this.removeFromPendingStat}>Add Back</button>
+              <button value={post.id} className="btn btn-outline-danger dlt-post" onClick={this.deleteMyPost}>Delete</button>
             </div>
             <div className="post-footer">
               <span className="card-title">{userName.fName}</span>

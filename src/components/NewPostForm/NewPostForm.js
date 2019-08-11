@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Button,
   Form,
   FormGroup,
   Label,
@@ -117,7 +116,11 @@ class NewPostForm extends React.Component {
         <Form>
           {
             (newPostId)
-              ? (<h3>Story: {story}</h3>)
+              ? (
+                <div className="story-display">
+                  <p>{story}</p>
+                </div>
+              )
               : (
                 <div className="story-form">
                   <FormGroup>
@@ -131,10 +134,14 @@ class NewPostForm extends React.Component {
           {
             (newPostId) ? (
               <FormGroup>
-                <ListItems filteredItem={filteredItem} />
-                <Label for="item1"></Label>
-                <Input type="text" name="text" id="item1" placeholder="Item I need.." value={item1} onChange={this.userItem1} />
-                <Button className="btn btn-primary m-2" onClick={this.postNewProdAndItem}>+ More Item</Button>
+                <div className="wanted-items">
+                  <ListItems filteredItem={filteredItem} />
+                </div>
+                <div className="item-container">
+                  <Label for="items"></Label>
+                  <Input type="text" name="text" id="items" placeholder="Item I need.." value={item1} onChange={this.userItem1} />
+                </div>
+                <i className="fas fa-plus" onClick={this.postNewProdAndItem}></i>
               </FormGroup>
             ) : (
               ''
@@ -143,9 +150,9 @@ class NewPostForm extends React.Component {
 
           {
             (newPostId) ? (
-              <input type="submit" value="Submit" className="btn btn-secondary m-5" onClick={this.completePost} />
+              <input type="submit" value="Create" className="btn btn-primary create-post" onClick={this.completePost} />
             ) : (
-                <input type="submit" value="Next" className="btn btn-secondary m-5" onClick={this.putApost} />
+                <input type="submit" value="Next" className="btn btn-primary" onClick={this.putApost} />
             )
           }
         </Form>
