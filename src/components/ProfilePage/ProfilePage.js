@@ -96,7 +96,7 @@ class ProfilePage extends React.Component {
           {displayNumOfHelped()}
         </div>
         <div className="user-info">
-          <h5>Hello, {myInfo.displayName}</h5>
+          <h3>Hello, {myInfo.displayName}</h3>
           <img src={myInfo.photoURL} alt="this user Img" className="img-thumbnail userImg" />
           <div className="border p-3">
             <p>Email: {myInfo.email}</p>

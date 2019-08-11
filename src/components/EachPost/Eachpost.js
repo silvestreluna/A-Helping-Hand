@@ -39,6 +39,7 @@ class EachPost extends React.Component {
             <div className="post-story">
               <p className="card-text">{post.postDesc}</p>
             </div>
+            <hr className="line-divider"/>
             <div className="post-items">
               <ul>
                 {postItems}

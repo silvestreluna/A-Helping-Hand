@@ -8,7 +8,6 @@ import {
 import firebase from 'firebase/app';
 
 import fbConnection from '../helpers/data/connections';
-// import Auth from '../components/Auth/Auth';
 import MyNavBar from '../components/MyNavBar/MyNavBar';
 import Home from '../components/Home/Home';
 import postPage from '../components/PostPage/PostPage';
@@ -16,10 +15,8 @@ import ProfilePage from '../components/ProfilePage/ProfilePage';
 import NewPostForm from '../components/NewPostForm/NewPostForm';
 import EditPost from '../components/EditPost/EditPost';
 import DonateItems from '../components/DonateItems/DonateItems';
-// import NewUser from '../components/NewUser/NewUser';
 
 import './App.scss';
-// import Auth from '../components/Auth/Auth';
 
 fbConnection();
 
