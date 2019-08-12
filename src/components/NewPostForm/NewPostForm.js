@@ -58,10 +58,11 @@ class NewPostForm extends React.Component {
       postDate: util.addDateAndTime(),
       postDesc: this.state.story,
     };
-
-    getData.addNewPost(newPostObj, newPostId)
-      .then(() => this.setState({ newPostId }))
-      .catch(err => console.error(err, 'Nothing to Add.'));
+    if (this.state.story !== '') {
+      getData.addNewPost(newPostObj, newPostId)
+        .then(() => this.setState({ newPostId }))
+        .catch(err => console.error(err, 'Nothing to Add.'));
+    }
   }
 
 
@@ -125,7 +126,7 @@ class NewPostForm extends React.Component {
                 <div className="story-form">
                   <FormGroup>
                     <Label for="story">Your Story</Label>
-                    <Input type="textarea" name="text" id="story" value={story} onChange={this.userStory} required />
+                    <Input type="textarea" name="text" id="story" value={story} onChange={this.userStory}/>
                   </FormGroup>
                 </div>
               )

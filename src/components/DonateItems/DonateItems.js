@@ -5,6 +5,8 @@ import getData from '../../helpers/data/getAllPost';
 import smashProd from '../../helpers/data/smashData';
 import DonorPageUser from '../DonorPageUser/DonorPageUser';
 
+import './DonateItems.scss';
+
 
 class DonateItems extends React.Component {
   state = {
@@ -95,17 +97,20 @@ class DonateItems extends React.Component {
     });
     return (
       <div className="DonateItems">
-        <h1>DonateItems</h1>
-        {clientInfo}
-        <ul>
-          {listOfItem}
-        </ul>
+        <div className="client-note">
+          {clientInfo}
+        </div>
+        <div className="items-list">
+          <ul>
+            {listOfItem}
+          </ul>
+        </div>
         {
           (isDonating)
             ? (
-            <div>
-              <button className="btn btn-success" onClick={this.goBackToPostPage}>Done</button>
-            </div>
+              <div>
+                <button className="btn btn-success" onClick={this.goBackToPostPage}>Done</button>
+              </div>
             )
             : (
               <div className="m-3">
