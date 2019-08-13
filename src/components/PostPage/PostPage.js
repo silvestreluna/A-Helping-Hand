@@ -48,11 +48,10 @@ class PostPage extends React.Component {
           <h3>All Post</h3>
         </div>
         <Link className="btn btn-outline-primary mt-3" to="/newPost">I Need Help</Link>
-        {/* <button className="btn btn-outline-primary" onClick={this.goToNewFormPage}>I need Help</button> */}
         <AllPost
           allPost={allPost}
           itemsName={itemsName}
-          users={users}/>
+          users={users} />
       </div>
     );
   }

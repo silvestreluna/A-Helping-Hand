@@ -33,9 +33,9 @@ class PendingDonationCard extends React.Component {
         <div className="card text-center">
           <div className="alert alert-warning pend-post-header" role="alert">
             <h6>Someone will be contacting you soon to donate the requested item(s).</h6>
-          <div className="post-header">
-            <p className="card-text">{post.postDate}</p>
-          </div>
+            <div className="post-header">
+              <p className="card-text">{post.postDate}</p>
+            </div>
           </div>
           <div className="card-body">
             <div className="post-story">

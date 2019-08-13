@@ -22,12 +22,12 @@
 .post-btn-wrapper, 
 .post-footer {
   max-height: 75px;
-  overflow: hidden;
+  overflow-y: auto;
 }
 
 .post-story {
   height: 60px;
-  overflow: scroll;
+  overflow-y: auto;
   text-align: left;
   background-color: #fcfafa;
   color: #666666;
@@ -41,7 +41,7 @@
 .post-items {
   ul {
     height: 70px;
-    overflow: scroll;
+    overflow-y: auto;
     li {
       text-align: left;
       color: #666666;

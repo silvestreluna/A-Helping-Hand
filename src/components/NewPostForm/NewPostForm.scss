@@ -22,7 +22,7 @@
   .story-display {
     background-color: #6c7b95;
     border-radius: 8px 8px 0 0;
-    overflow: scroll;
+    overflow-y: auto;
     width: 350px;
     height: 100px;
     padding: 12px;
