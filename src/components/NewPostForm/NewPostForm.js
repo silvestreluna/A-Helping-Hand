@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Button,
   Form,
   FormGroup,
   Label,
@@ -14,6 +13,7 @@ import util from '../../helpers/util';
 import getData from '../../helpers/data/getAllPost';
 import ListItems from '../ListItems/ListItems';
 import prodName from '../../helpers/data/smashData';
+import './NewPostForm.scss';
 
 
 class NewPostForm extends React.Component {
@@ -58,10 +58,11 @@ class NewPostForm extends React.Component {
       postDate: util.addDateAndTime(),
       postDesc: this.state.story,
     };
-
-    getData.addNewPost(newPostObj, newPostId)
-      .then(() => this.setState({ newPostId }))
-      .catch(err => console.error(err, 'Nothing to Add.'));
+    if (this.state.story !== '') {
+      getData.addNewPost(newPostObj, newPostId)
+        .then(() => this.setState({ newPostId }))
+        .catch(err => console.error(err, 'Nothing to Add.'));
+    }
   }
 
 
@@ -112,43 +113,50 @@ class NewPostForm extends React.Component {
     const filteredItem = smashItemName.filter(a => a.postId === newPostId);
 
     return (
-      <div className="NewPostForm col-6">
-        <h3>New Form</h3>
-        <div>
-          <Form>
-            {
-              (newPostId)
-                ? (<h5>{story}</h5>)
-                : (
+      <div className="NewPostForm">
+        <Form>
+          {
+            (newPostId)
+              ? (
+                <div className="story-display">
+                  <p>{story}</p>
+                </div>
+              )
+              : (
+                <div className="story-form">
                   <FormGroup>
                     <Label for="story">Your Story</Label>
-                    <Input type="textarea" name="text" id="story" value={story} onChange={this.userStory} required />
+                    <Input type="textarea" name="text" id="story" value={story} onChange={this.userStory}/>
                   </FormGroup>
-                )
-            }
-            {/* <ListItems /> */}
-            {
-              (newPostId) ? (
-                <FormGroup>
+                </div>
+              )
+          }
+          {/* <ListItems /> */}
+          {
+            (newPostId) ? (
+              <FormGroup>
+                <div className="wanted-items">
                   <ListItems filteredItem={filteredItem} />
-                  <Label for="item1"></Label>
-                  <Input type="text" name="text" id="item1" placeholder="Item I need.." value={item1} onChange={this.userItem1} />
-                  <Button className="btn btn-primary m-2" onClick={this.postNewProdAndItem}>+ More Item</Button>
-                </FormGroup>
-              ) : (
-                ''
-              )
-            }
+                </div>
+                <div className="item-container">
+                  <Label for="items"></Label>
+                  <Input type="text" name="text" id="items" placeholder="Item I need.." value={item1} onChange={this.userItem1} />
+                </div>
+                <i className="fas fa-plus" onClick={this.postNewProdAndItem}></i>
+              </FormGroup>
+            ) : (
+              ''
+            )
+          }
 
-            {
-              (newPostId) ? (
-                <input type="submit" value="Submit" className="btn btn-secondary m-5" onClick={this.completePost} />
-              ) : (
-                  <input type="submit" value="Next" className="btn btn-secondary m-5" onClick={this.putApost} />
-              )
-            }
-          </Form>
-        </div>
+          {
+            (newPostId) ? (
+              <input type="submit" value="Create" className="btn btn-outline-secondary create-post" onClick={this.completePost} />
+            ) : (
+                <input type="submit" value="Next" className="btn btn-outline-secondary" onClick={this.putApost} />
+            )
+          }
+        </Form>
       </div>
     );
   }

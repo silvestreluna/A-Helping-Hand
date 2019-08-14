@@ -1,3 +1,77 @@
 .EachPost {
   display: block;
+  height: 280px !important;
+  margin: 20px 0;
+  .card {
+    border-radius: 8px !important;
+    box-shadow: 4px 4px 4px rgba(89, 90, 91, .3);
+  }
+  .post-header {
+    background-color: #ccc;
+    padding: 10px;
+    color: #fff;
+    border-radius: 8px 8px 0 0;
+  }
+  .card-body {
+    padding: 10px;
+  }
+}
+
+.post-story,
+.post-items, 
+.post-btn-wrapper, 
+.post-footer {
+  max-height: 75px;
+  overflow-y: auto;
+}
+
+.post-story {
+  height: 60px;
+  overflow-y: auto;
+  text-align: left;
+  background-color: #fcfafa;
+  color: #666666;
+  margin-bottom: 15px;
+  padding: 10px;
+  .card-text {
+    line-height: 18px;
+  }
+}
+
+.post-items {
+  ul {
+    height: 70px;
+    overflow-y: auto;
+    li {
+      text-align: left;
+      color: #666666;
+    }
+  }
+}
+
+.post-btn-wrapper{
+  padding:15px;
+  .donate-btn {
+    background-color: #39b54a;
+    color: #fff;
+    border: 1px solid #2b8838;
+    padding: 8px 45px;
+  }
+}
+
+.dltEdit-buttons-wrapper {
+  display: flex;
+  justify-content: space-around;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.post-footer {
+  display: flex;
+  justify-content: space-between;
+  span {
+    align-self: flex-end;
+    margin:0;
+    font-weight: 100;
+  }
 }

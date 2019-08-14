@@ -1,7 +1,18 @@
 .ProfilePage {
   display: block;
-}
-
-.userImg {
-  width: 150px;
+  .count-alert {
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+    background-color: #ccc;
+  }
+  .user-info {
+    font-size: 22px;
+    font-weight: 400;
+    background-color: #ccc;
+    color: #fff;
+    .userImg {
+      width: 150px;
+    }
+  }
 }

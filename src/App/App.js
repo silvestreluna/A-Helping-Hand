@@ -8,7 +8,6 @@ import {
 import firebase from 'firebase/app';
 
 import fbConnection from '../helpers/data/connections';
-// import Auth from '../components/Auth/Auth';
 import MyNavBar from '../components/MyNavBar/MyNavBar';
 import Home from '../components/Home/Home';
 import postPage from '../components/PostPage/PostPage';
@@ -16,10 +15,9 @@ import ProfilePage from '../components/ProfilePage/ProfilePage';
 import NewPostForm from '../components/NewPostForm/NewPostForm';
 import EditPost from '../components/EditPost/EditPost';
 import DonateItems from '../components/DonateItems/DonateItems';
-// import NewUser from '../components/NewUser/NewUser';
+// import MyFooter from '../components/MyFooter/MyFooter';
 
 import './App.scss';
-// import Auth from '../components/Auth/Auth';
 
 fbConnection();
 
@@ -71,19 +69,21 @@ class App extends React.Component {
         <BrowserRouter>
           <React.Fragment>
             <MyNavBar authed={authed} />
-            <Switch>
-              <PublicRoute path='/auth' component={Home} authed={authed} />
-              <PrivateRoute path='/home' component={Home} authed={authed} />
-              <PrivateRoute path='/posts' component={postPage} authed={authed} />
-              <PrivateRoute path='/user' component={ProfilePage} authed={authed} />
-              <PrivateRoute path='/newPost' component={NewPostForm} authed={authed} />
-              <PrivateRoute path='/editPost/:id' component={EditPost} authed={authed} />
-              <PrivateRoute path='/donate/:id' component={DonateItems} authed={authed} />
-              {/* <PrivateRoute path='/newUser' component={NewUser} authed={authed} /> */}
-              <Redirect from="*" to="/home" />
-            </Switch>
+            <div className="comp-pages">
+              <Switch>
+                <PublicRoute path='/auth' component={Home} authed={authed} />
+                <PrivateRoute path='/home' component={Home} authed={authed} />
+                <PrivateRoute path='/posts' component={postPage} authed={authed} />
+                <PrivateRoute path='/user' component={ProfilePage} authed={authed} />
+                <PrivateRoute path='/newPost' component={NewPostForm} authed={authed} />
+                <PrivateRoute path='/editPost/:id' component={EditPost} authed={authed} />
+                <PrivateRoute path='/donate/:id' component={DonateItems} authed={authed} />
+                <Redirect from="*" to="/home" />
+              </Switch>
+            </div>
           </React.Fragment>
         </BrowserRouter>
+        {/* <MyFooter /> */}
       </div>
     );
   }

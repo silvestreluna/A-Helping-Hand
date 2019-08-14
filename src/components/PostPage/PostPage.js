@@ -5,6 +5,8 @@ import allPostData from '../../helpers/data/getAllPost';
 import allUsers from '../../helpers/data/getUsers';
 import smash from '../../helpers/data/smashData';
 
+import './PostPage.scss';
+
 class PostPage extends React.Component {
   state = {
     allPost: [],
@@ -42,14 +44,14 @@ class PostPage extends React.Component {
     } = this.state;
     return (
       <div className="PostPage">
-        <h3>Neighbors needing A Helping Hand</h3>
-        <Link className="btn btn-outline-primary" to="/newPost">I Need Help</Link>
-        {/* <button className="btn btn-outline-primary" onClick={this.goToNewFormPage}>I need Help</button> */}
+        <div className="post-all">
+          <h3>All Post</h3>
+        </div>
+        <Link className="btn btn-outline-primary mt-3" to="/newPost">I Need Help</Link>
         <AllPost
           allPost={allPost}
           itemsName={itemsName}
-          users={users}/>
-
+          users={users} />
       </div>
     );
   }

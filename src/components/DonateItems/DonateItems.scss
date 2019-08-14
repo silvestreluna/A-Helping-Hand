@@ -1,3 +1,18 @@
 .DonateItems {
   display: block;
+  .client-note {
+    background-color: #ccc;
+    color: #fff;
+    font-size: 30px;
+    font-weight: 600;
+    padding: 35px;
+  }
+  .items-list {
+    background-color: #fcfafa;
+    color: #042f4b;
+    ul {
+      font-size: 20px;
+      list-style-type: none;
+    }
+  }
 }

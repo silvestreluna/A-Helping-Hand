@@ -1,3 +1,28 @@
 .PendingDonationCard {
   display: block;
+  padding: 10px !important;
+  .card {
+    border-radius: 8px !important;
+    box-shadow: 4px 4px 4px rgba(89, 90, 91, .3);
+    .card-body {
+      padding: 10px !important;
+    }
+  }
+  .pend-post-header {
+    border-radius: 8px 8px 0 0;
+  }
+  .buttons-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .post-footer {
+    display: flex;
+    justify-content: space-between;
+    span {
+      align-self: flex-end;
+      margin:0;
+      font-weight: 100;
+    }
+  }
 }

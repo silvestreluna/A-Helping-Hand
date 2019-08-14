@@ -1,3 +1,13 @@
 .MyNavBar {
   display: block;
+  .navbar-brand {
+    font-size: 23px !important;
+    font-weight: 600 !important;
+  }
+  .log-out-btn {
+    color: rgba(255,255,255,.5) !important;
+  }
+  .log-out-btn:hover {
+    color: #fff !important;
+  }
 }

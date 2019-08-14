@@ -7,6 +7,7 @@ import smash from '../../helpers/data/smashData';
 import LandingPage from '../LandingPage/LandingPage';
 import NewUserForm from '../NewUserForm/NewUserForm';
 
+
 class Home extends React.Component {
   state = {
     allPost: [],
@@ -17,7 +18,10 @@ class Home extends React.Component {
 
   getAllPostData = () => {
     allPostData.getAllPost()
-      .then(allPost => this.setState({ allPost }))
+      .then((allPost) => {
+        const onlyThreePost = allPost.splice(0, 4);
+        this.setState({ allPost: onlyThreePost });
+      })
       .catch(err => console.error(err, 'Nothing came back.'));
 
     smash.itemsName()

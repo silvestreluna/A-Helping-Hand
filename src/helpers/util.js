@@ -1,7 +1,7 @@
 import moment from 'moment';
 
 const addDateAndTime = () => {
-  const today = moment().format('LLL');
+  const today = moment().format('LL');
   return today;
 };
 

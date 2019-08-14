@@ -1,4 +1,5 @@
 import React from 'react';
+import './PendingDonationCard.scss';
 
 class PendingDonationCard extends React.Component {
   deleteMyPost = (e) => {
@@ -28,24 +29,30 @@ class PendingDonationCard extends React.Component {
     });
 
     return (
-      <div className="PendingDonationCard col-3">
+      <div className="PendingDonationCard col-md-4 mt-4">
         <div className="card text-center">
-          <div className="alert alert-warning" role="alert">
-            <h5>Someone will be contacting you soon to donate the requested item(s).</h5>
+          <div className="alert alert-warning pend-post-header" role="alert">
+            <h6>Someone will be contacting you soon to donate the requested item(s).</h6>
+            <div className="post-header">
+              <p className="card-text">{post.postDate}</p>
+            </div>
           </div>
           <div className="card-body">
-            <h5 className="card-title">{userName.fName}</h5>
-            <p className="card-text">{userName.loc}</p>
-            <p className="card-text">{post.postDate}</p>
-            <p className="card-text">{post.postDesc}</p>
-            <div>
+            <div className="post-story">
+              <p className="card-text">{post.postDesc}</p>
+            </div>
+            <div className="post-items">
               <ul>
                 {postItems}
               </ul>
             </div>
-            <div>
-              <button value={post.id}className="btn btn-info" onClick={this.removeFromPendingStat}>Remove from Pending Status</button>
-              <button value={post.id} className="btn btn-danger" onClick={this.deleteMyPost}>Delete Post</button>
+            <div className="buttons-wrapper">
+              <button value={post.id} className="btn btn-outline-info add-post-back" onClick={this.removeFromPendingStat}>Add Back</button>
+              <button value={post.id} className="btn btn-outline-danger dlt-post" onClick={this.deleteMyPost}>Delete</button>
+            </div>
+            <div className="post-footer">
+              <span className="card-title">{userName.fName}</span>
+              <span className="card-text"><i className="fas fa-map-marker-alt"></i> {userName.loc}</span>
             </div>
           </div>
         </div>
