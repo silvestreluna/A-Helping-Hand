@@ -151,9 +151,9 @@ class NewPostForm extends React.Component {
 
           {
             (newPostId) ? (
-              <input type="submit" value="Create" className="btn btn-primary create-post" onClick={this.completePost} />
+              <input type="submit" value="Create" className="btn btn-outline-secondary create-post" onClick={this.completePost} />
             ) : (
-                <input type="submit" value="Next" className="btn btn-primary" onClick={this.putApost} />
+                <input type="submit" value="Next" className="btn btn-outline-secondary" onClick={this.putApost} />
             )
           }
         </Form>

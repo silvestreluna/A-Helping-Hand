@@ -15,6 +15,7 @@ import ProfilePage from '../components/ProfilePage/ProfilePage';
 import NewPostForm from '../components/NewPostForm/NewPostForm';
 import EditPost from '../components/EditPost/EditPost';
 import DonateItems from '../components/DonateItems/DonateItems';
+// import MyFooter from '../components/MyFooter/MyFooter';
 
 import './App.scss';
 
@@ -82,6 +83,7 @@ class App extends React.Component {
             </div>
           </React.Fragment>
         </BrowserRouter>
+        {/* <MyFooter /> */}
       </div>
     );
   }

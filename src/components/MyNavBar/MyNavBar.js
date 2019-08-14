@@ -21,7 +21,7 @@ class MyNavBar extends React.Component {
     return (
       <div className="MyNavBar">
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-          <span className="navbar-brand">A Helping <i className="fas fa-hands"></i></span>
+          <span className="navbar-brand">A Helping <i className="fas fa-hands hand-icon"></i></span>
           <button className="navbar-toggler" type="button" data-toggle="collapse"
           data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>

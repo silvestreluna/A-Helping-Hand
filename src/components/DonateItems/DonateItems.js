@@ -10,7 +10,7 @@ import './DonateItems.scss';
 
 class DonateItems extends React.Component {
   state = {
-    postObj: {},
+    postObj: '',
     items: [],
     prodName: [],
     client: [],
@@ -19,25 +19,22 @@ class DonateItems extends React.Component {
 
   getAllPostData = () => {
     const postId = this.props.match.params.id;
-    const currentUserUid = firebase.auth().currentUser.uid;
-    // const postPath = 'post';
-    // const itemPath = 'items';
-    // const userPath = 'XKs7nATTXkXjAncQucTHFxQwzyq2';
 
-
-    getData.getDonorSelectedItem(postId)
-      .then(res => this.setState({ postObj: res.data }))
-      .catch(err => console.error(err, 'Nothing came back.'));
+    getData.getDonorSelectedItem(postId, 'post')
+      .then((res) => {
+        this.setState({ postObj: res.data.uid });
+      }).then(() => {
+        const test = this.state.postObj;
+        getData.getUser(test)
+          .then(res2 => this.setState({ client: res2.data }));
+      })
+      .catch(err => console.error(err, 'Nothing came back. test'));
 
     smashProd.itemsName()
       .then((res) => {
         const filteredDateById = res.filter(item => item.postId === postId);
         this.setState({ prodName: filteredDateById });
       })
-      .catch(err => console.error(err, 'Nothing came back.'));
-
-    getData.getUser(currentUserUid)
-      .then(res => this.setState({ client: res.data }))
       .catch(err => console.error(err, 'Nothing came back.'));
   }
 
@@ -50,7 +47,6 @@ class DonateItems extends React.Component {
       postId,
     };
     getData.addHelper(helperObj)
-      // .then()
       .catch(err => console.error(err, 'Nothing updated'));
   }
 
@@ -83,7 +79,7 @@ class DonateItems extends React.Component {
   render() {
     const { client, prodName, isDonating } = this.state;
     const clientInfo = Object.values(client).map(a => (
-      <DonorPageUser key={a.id}
+      <DonorPageUser key={a.uid}
         name={`${a.fName} ${a.lName}`}
         email={a.email}
         phNum={a.phNum}
