@@ -2,7 +2,14 @@
 A helping hand is a web application that makes it easy for people to ask for help or to help others by donating the requested item(s).
 
 ### Screenshots
+###### Home Page
+![Home page](https://raw.githubusercontent.com/silvestreluna/A-Helping-Hand/master/assets/home.png)
 
+###### All Post Page
+![All post page](https://raw.githubusercontent.com/silvestreluna/A-Helping-Hand/master/assets/allPostPage.png)
+
+###### User Page
+![User profile page](https://raw.githubusercontent.com/silvestreluna/A-Helping-Hand/master/assets/mySpace.png)
 
 ### Installation Instructions
 - Clone down this repo `$ git@github.com:silvestreluna/A-Helping-Hand.git`
